@@ -1,0 +1,33 @@
+---
+import { Typewriter } from "../ui/animations/typewriter";
+import { HeaderOverlay } from "./header-overlay";
+---
+
+<header class="p-4 max-w-7xl mx-auto">
+  <div class="relative">
+    <h1
+      class="text-end text-[13vw]/[0.8] xl:text-[180px]/[0.9] font-sans font-bold pt-2"
+    >
+      THINKERCARE <br /> GROUP.
+    </h1>
+    <div class="hidden sm:block">
+      <HeaderOverlay client:load />
+    </div>
+    <div
+      class="hidden sm:block absolute top-[calc(10vw+15px)] xl:top-42 left-[2vw] xl:left-2 text-[calc(1vw+5px)] xl:text-[20px]/[1.1] font-mono"
+    >
+      ©2025
+    </div>
+    <div
+      class="absolute top-[calc(15vw+5px)] left-[2vw] xl:left-2 font-medium text-[3vw]/[3vw] xl:text-[40px]/[1.1] xl:top-51"
+    >
+      <Typewriter
+        client:load
+        delay={100}
+        split="word"
+        text="WHEN THINKERS\n BECOMES MAKERS"
+      />
+    </div>
+  </div>
+  <img src="/assets/people.png" alt="THINKERCARE GROUP" class="w-full" />
+</header>

@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "AcuminVariableConcept";
+  src: url("/fonts/Acumin-Variable-Concept.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TanerArdaliAntikorMonoRegular";
+  src: url("/fonts/Taner-Ardali-Antikor-Mono-Regular.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme inline {
+  --font-sans: "AcuminVariableConcept", sans-serif;
+  --font-mono: "TanerArdaliAntikorMonoRegular", monospace;
+  --color-background: #ffffff;
+  --color-background-secondary: #f3f3f3;
+  --color-foreground: #000000;
+  --color-foreground-secondary: #1d1d1b;
+  --color-foreground-tertiary: #999999;
+  --color-primary: #00ff00;
+  --breakpoint-xs: 300px;
+  --color-footer-background: #000000;
+  --color-footer-foreground: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply font-mono bg-background text-foreground overflow-x-hidden;
+  }
+  *::selection {
+    @apply bg-primary text-white;
+  }
+  * {
+    scrollbar-width: thin;
+  }
+  .text-title {
+    @apply text-[5vw]/[1.1] xl:text-7xl;
+  }
+  .size-title {
+    @apply size-[5vw] xl:size-12;
+  }
+  .text-title-lg {
+    @apply text-[6.25vw]/[1.1] xl:text-[90px];
+  }
+  .size-title-lg {
+    @apply size-[5.5vw] xl:size-15;
+  }
+}

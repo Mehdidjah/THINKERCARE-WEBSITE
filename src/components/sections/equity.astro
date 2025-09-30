@@ -1,0 +1,70 @@
+---
+import DataGrid from "../data-grid";
+
+const partners = [
+  {
+    name: "WIZABOT",
+    image: "/equity/wizabot.svg",
+    href: "https://www.instagram.com/wizabot/",
+    description: "TECH",
+  },
+  
+  {
+    name: "FOD",
+    image: "/equity/fod.svg",
+    href: "https://www.instagram.com/foodondiet/",
+    description: "FOOD",
+  },
+  {
+    name: "OKADOO",
+    image: "/equity/okadoo.svg",
+    href: "https://www.instagram.com/okadoo_market/",
+    description: "ONLINE MARKET",
+  },
+  {
+    name: "QAREEB",
+    image: "/equity/qareeb.svg",
+    href: "https://www.instagram.com/qareeb_official/",
+    description: "CAMERA",
+  },
+  {
+    name: "AZUL COSMETICS",
+    image: "/equity/azul.svg",
+    href: "https://www.instagram.com/azulcosmetique/",
+    description: "CISMITICS",
+  },
+  {
+    name: "GARINI",
+    image: "/equity/garini.svg",
+    href: "https://www.instagram.com/garini_app/",
+    description: "GARINI",
+  },
+];
+---
+
+<section class="space-y-4 mb-16">
+  <svg
+    width="129"
+    height="76"
+    viewBox="0 0 129 76"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="mx-auto size-16 lg:size-20"
+  >
+    <path
+      d="M6 6L65.2 65.21L122.79 7.62012"
+      stroke="black"
+      stroke-width="15"
+      stroke-miterlimit="10"></path>
+  </svg>
+  <h2 class="text-title font-bold text-center font-sans">
+    EQUITY
+    <span class="text-foreground-tertiary"> PARTNERS </span>
+  </h2>
+  <DataGrid client:load data={partners} />
+</section>
+<div class="text-xl font-light text-center max-w-4xl mx-auto p-4 mt-16">
+  AT THINKERCARE GROUP,EQUITY PARTNERSHIPS ARE BUILT ON TRUST, VISION, AND
+  LONG-TERM VALUE. WE DON’T JUST INVEST CAPITAL. WE BRING STRATEGY, EXPERIENCE,
+  AND A . STRONG ECOSYSTEM.
+</div>
