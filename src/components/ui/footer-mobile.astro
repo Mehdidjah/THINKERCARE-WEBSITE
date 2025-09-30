@@ -48,7 +48,7 @@ import { FaInstagram } from "react-icons/fa";
           required
         />
         <Input
-          type="Email"
+          type="email"
           placeholder="EMAIL *"
           name="data[email]"
           className="border-foreground-tertiary focus:border-footer-foreground"
@@ -59,6 +59,7 @@ import { FaInstagram } from "react-icons/fa";
           name="data[phone]"
           placeholder="PHONE *"
           className="border-foreground-tertiary focus:border-footer-foreground"
+          inputMode="numeric"
           required
         />
         <Input
@@ -66,6 +67,7 @@ import { FaInstagram } from "react-icons/fa";
           name="data[message]"
           placeholder="MESSAGE *"
           className="border-foreground-tertiary focus:border-footer-foreground col-span-2"
+          maxLength={200}
           required
         />
         <div class="col-span-2 flex justify-end -mt-4">
@@ -189,7 +191,7 @@ import { FaInstagram } from "react-icons/fa";
     <DotAnimation client:load text="AND THIS IS JUST THE BEGINNING" />
   </div>
 
-
+  <!-- MOBILE/WEB TOAST MESSAGE (created if missing by script) -->
   <div
     id="form-message-mobile"
     class="hidden opacity-0 transform scale-95 translate-y-2 transition-all duration-300
@@ -198,7 +200,7 @@ import { FaInstagram } from "react-icons/fa";
            w-[calc(100%-2rem)] max-w-sm text-center p-4 rounded-xl font-semibold"
   ></div>
 
-
+  <!-- POP-IN THEN FADE-OUT, PREVENT NAVIGATION, HANDLE {"created":1} -->
   <script>
     (function () {
       const ready = (cb) =>
@@ -270,9 +272,25 @@ import { FaInstagram } from "react-icons/fa";
         form.addEventListener("submit", (e) => {
           e.preventDefault();
 
+          const fd = new FormData(form);
+
+          // Enforce message length <= 200
+          const message = (fd.get("data[message]") || "").toString();
+          if (message.length > 200) {
+            popupAndFade("Message must be 200 characters or fewer.", "error");
+            return;
+          }
+
+          // Preserve leading 0 in phone by forcing text in Sheets (prefix with ')
+          const rawPhone = (fd.get("data[phone]") || "").toString().trim();
+          if (rawPhone) {
+            const phoneForSheet = rawPhone.startsWith("'") ? rawPhone : "'" + rawPhone;
+            fd.set("data[phone]", phoneForSheet);
+          }
+
           fetch(form.action, {
             method: "POST",
-            body: new FormData(form),
+            body: fd,
           })
             .then((r) => r.json())
             .then((data) => {

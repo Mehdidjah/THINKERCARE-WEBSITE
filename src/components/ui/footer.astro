@@ -1,4 +1,3 @@
-Footer website
 ---
 import { Underline } from "./animations/underline";
 import { DotAnimation } from "./animations/dot-animation";
@@ -37,136 +36,148 @@ import { FaInstagram } from "react-icons/fa";
           TOUCH
         </div>
       </div>
+
       <form
-  class="grid grid-cols-2 gap-x-8 gap-y-12"
-  action="https://sheetdb.io/api/v1/5ivvxdan051gq"
-  method="post"
-  id="sheetdb-form"
->
-  <Input
-    type="text"
-    placeholder="FULL NAME *"
-    name="data[fullname]"
-    className="border-foreground-tertiary focus:border-footer-foreground col-span-2"
-    required
-  />
-  <Input
-    type="Email"
-    placeholder="EMAIL *"
-    name="data[email]"
-    className="border-foreground-tertiary focus:border-footer-foreground"
-    required
-  />
-  <Input
-    type="tel"
-    name="data[phone]"
-    placeholder="PHONE *"
-    className="border-foreground-tertiary focus:border-footer-foreground"
-    required
-  />
-  <Input
-    type="text"
-    name="data[message]"
-    placeholder="MESSAGE *"
-    className="border-foreground-tertiary focus:border-footer-foreground col-span-2"
-    required
-  />
-  <div class="col-span-2 flex justify-end -mt-4">
-    <button
-      type="submit"
-      class="p-4 scale-100 hover:scale-110 transition-all duration-300"
-    >
-      <svg
-        width="80"
-        height="81"
-        viewBox="0 0 80 81"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        class="size-12"
+        class="grid grid-cols-2 gap-x-8 gap-y-12"
+        action="https://sheetdb.io/api/v1/5ivvxdan051gq"
+        method="post"
+        id="sheetdb-form"
       >
-        <path
-          d="M36.748 3L74.5398 41.2552L38.2403 77.9948M0.443359 39.7448H74.5398"
-          stroke="white"
-          stroke-width="6.66667"
-          stroke-miterlimit="10"
-        ></path>
-      </svg>
-    </button>
-  </div>
-</form>
+        <Input
+          type="text"
+          placeholder="FULL NAME *"
+          name="data[fullname]"
+          className="border-foreground-tertiary focus:border-footer-foreground col-span-2"
+          required
+        />
+        <Input
+          type="email"
+          placeholder="EMAIL *"
+          name="data[email]"
+          className="border-foreground-tertiary focus:border-footer-foreground"
+          required
+        />
+        <Input
+          type="tel"
+          name="data[phone]"
+          placeholder="PHONE *"
+          className="border-foreground-tertiary focus:border-footer-foreground"
+          inputMode="numeric"
+          required
+        />
+        <Input
+          type="text"
+          name="data[message]"
+          placeholder="MESSAGE *"
+          className="border-foreground-tertiary focus:border-footer-foreground col-span-2"
+          maxLength={200}
+          required
+        />
+        <div class="col-span-2 flex justify-end -mt-4">
+          <button
+            type="submit"
+            class="p-4 scale-100 hover:scale-110 transition-all duration-300"
+          >
+            <svg
+              width="80"
+              height="81"
+              viewBox="0 0 80 81"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="size-12"
+            >
+              <path
+                d="M36.748 3L74.5398 41.2552L38.2403 77.9948M0.443359 39.7448H74.5398"
+                stroke="white"
+                stroke-width="6.66667"
+                stroke-miterlimit="10"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </form>
 
+      <div
+        id="form-message"
+        class="hidden opacity-0 transform scale-95 translate-y-2 transition-all duration-300 col-span-2 text-center p-4 rounded-xl font-semibold"
+      ></div>
 
-<div
-  id="form-message"
-  class="hidden opacity-0 transform scale-95 translate-y-2 transition-all duration-300 col-span-2 text-center p-4 rounded-xl font-semibold"
-></div>
+      <script>
+        const form = document.getElementById("sheetdb-form");
+        const messageBox = document.getElementById("form-message");
+        let hideTimer = null;
 
+        function popupAndFade(text, variant) {
+          if (hideTimer) {
+            clearTimeout(hideTimer);
+            hideTimer = null;
+          }
 
-<script>
-  const form = document.getElementById("sheetdb-form");
-  const messageBox = document.getElementById("form-message");
-  let hideTimer = null;
+          messageBox.textContent = text;
+          messageBox.classList.remove("bg-green-600", "bg-red-600", "text-white");
+          if (variant === "success") {
+            messageBox.classList.add("bg-green-600", "text-white");
+          } else {
+            messageBox.classList.add("bg-red-600", "text-white");
+          }
 
-  function popupAndFade(text, variant) {
+          messageBox.classList.remove("hidden");
+          messageBox.classList.add("opacity-0", "scale-95", "translate-y-2");
 
-    if (hideTimer) {
-      clearTimeout(hideTimer);
-      hideTimer = null;
-    }
+          requestAnimationFrame(() => {
+            messageBox.classList.remove("opacity-0", "scale-95", "translate-y-2");
+            messageBox.classList.add("opacity-100", "scale-100", "translate-y-0");
+          });
 
+          hideTimer = setTimeout(() => {
+            messageBox.classList.remove("opacity-100", "scale-100", "translate-y-0");
+            messageBox.classList.add("opacity-0", "translate-y-2");
 
-    messageBox.textContent = text;
-    messageBox.classList.remove("bg-green-600", "bg-red-600", "text-white");
-    if (variant === "success") {
-      messageBox.classList.add("bg-green-600", "text-white");
-    } else {
-      messageBox.classList.add("bg-red-600", "text-white");
-    }
-
-
-    messageBox.classList.remove("hidden");
-    messageBox.classList.add("opacity-0", "scale-95", "translate-y-2");
-
-
-    requestAnimationFrame(() => {
-      messageBox.classList.remove("opacity-0", "scale-95", "translate-y-2");
-      messageBox.classList.add("opacity-100", "scale-100", "translate-y-0");
-    });
-
-
-    hideTimer = setTimeout(() => {
-      messageBox.classList.remove("opacity-100", "scale-100", "translate-y-0");
-      messageBox.classList.add("opacity-0", "translate-y-2");
-
-      const onEnd = (e) => {
-        if (e.propertyName === "opacity") {
-   
-          messageBox.classList.add("hidden", "scale-95");
-          messageBox.removeEventListener("transitionend", onEnd);
+            const onEnd = (e) => {
+              if (e.propertyName === "opacity") {
+                messageBox.classList.add("hidden", "scale-95");
+                messageBox.removeEventListener("transitionend", onEnd);
+              }
+            };
+            messageBox.addEventListener("transitionend", onEnd);
+          }, 5000);
         }
-      };
-      messageBox.addEventListener("transitionend", onEnd);
-    }, 5000);
-  }
 
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
 
-    fetch(form.action, {
-      method: "POST",
-      body: new FormData(form),
-    })
-      .then((response) => response.json())
-      .then(() => {
-        popupAndFade("Your message has been sent successfully!", "success");
-        form.reset();
-      })
-      .catch(() => {
-        popupAndFade("Oops! Something went wrong. Please try again.", "error");
-      });
-  });
-</script>
+          const fd = new FormData(form);
+
+          // Enforce message length <= 200
+          const message = (fd.get("data[message]") || "").toString();
+          if (message.length > 200) {
+            popupAndFade("Message must be 200 characters or fewer.", "error");
+            return;
+          }
+
+          // Preserve leading 0 in phone by forcing text in Sheets (prefix with ')
+          const rawPhone = (fd.get("data[phone]") || "").toString().trim();
+          if (rawPhone) {
+            const phoneForSheet = rawPhone.startsWith("'") ? rawPhone : "'" + rawPhone;
+            fd.set("data[phone]", phoneForSheet);
+          }
+
+          fetch(form.action, {
+            method: "POST",
+            body: fd,
+          })
+            .then((response) => response.json())
+            .then(() => {
+              popupAndFade("Your message has been sent successfully!", "success");
+              form.reset();
+            })
+            .catch(() => {
+              popupAndFade("Oops! Something went wrong. Please try again.", "error");
+            });
+        });
+      </script>
     </div>
+
     <div class="flex max-md:flex-col w-full justify-between gap-8">
       <div>
         <h3>FOLLOW</h3>
@@ -209,6 +220,7 @@ import { FaInstagram } from "react-icons/fa";
         </Underline>
       </div>
     </div>
+
     <div class="flex max-md:flex-col w-full justify-between gap-8">
       <img
         src="/assets/logo.svg"
@@ -218,8 +230,8 @@ import { FaInstagram } from "react-icons/fa";
       <a
         class="hover:underline"
         href="https://www.google.com/maps/place/10+Rue+de+la+Paix,+75002+Paris,+France/@48.866667,2.35,17z/data=!4m6!3m5!1s0x47e671fd10fa77a3:0xea0b16a57270d2e0!8m2!3d48.866667!4d2.35!16s%2Fg%2F11c48t3wgv?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D"
-        target="_blank">10 RUE <br /> DE LA PAIX 75002 <br /> PARIS FRANCE</a
-      >
+        target="_blank"
+      >10 RUE <br /> DE LA PAIX 75002 <br /> PARIS FRANCE</a>
       <a
         class="md:text-center hover:underline"
         href="https://www.google.com/maps/place/Jalan+Munduk,+Tengah+Nomor+2D,+Pererenan,+Mengwi,+Bali,+Indonesia/@-8.5206028,115.2346516,17z/data=!4m6!3m5!1s0x2dd22f25e2884165:0x178753056393958!8m2!3d-8.5206028!4d115.2368403!16s%2Fg%2F1td80kbs?entry=ttu&g_ep=EgoyMDI1MDIyNS4wIKXMDSoASAFQAw%3D%3D"
@@ -261,6 +273,7 @@ import { FaInstagram } from "react-icons/fa";
       </div>
     </div>
   </div>
+
   <div class="bg-primary p-2 text-center">
     <DotAnimation client:load text="AND THIS IS JUST THE BEGINNING" />
   </div>
