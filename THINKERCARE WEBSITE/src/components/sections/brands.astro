@@ -1,0 +1,81 @@
+---
+import DataGrid from "../data-grid";
+const brands = [
+  {
+    name: "TOUCHÉ",
+    image: "/brands/touche.svg",
+    href: "https://www.instagram.com/toucheskincare.lab/",
+    description: "PREMIUM SKINCARE & COSMETICS",
+  },
+  {
+    name: "BELNCO",
+    image: "/brands/belnco.svg",
+    href: "https://www.instagram.com/bel.nco/",
+    description: "INNOVATIVE BEAUTY SOLUTIONS",
+  },
+  {
+    name: "SHAITE",
+    image: "/brands/shaitea.svg",
+    href: "https://www.instagram.com/shaiteatox/",
+    description: "PREMIUM TEA & WELLNESS",
+  },
+  {
+    name: "HANGAR",
+    image: "/brands/hangar.svg",
+    href: "https://www.instagram.com/thehangargym_dz/",
+    description: "FITNESS & ATHLETIC LIFESTYLE",
+  },
+  {
+    name: "NOOM",
+    image: "/brands/noom.svg",
+    href: "https://www.instagram.com/noom.lab/",
+    description: "PSYCHOLOGY-BASED WELLNESS",
+  },
+  {
+    name: "OWNDENTITY",
+    image: "/brands/owndentity.svg",
+    href: "https://www.instagram.com/owndentity/",
+    description: "PERSONAL CARE ESSENTIALS",
+  },
+  {
+    name: "HAMOUCHE FOOD",
+    image: "/brands/hfi.svg",
+    href: "https://www.instagram.com/lhima.charcuterie/",
+    description: "GOURMET FOOD & CATERING SERVICES",
+  },
+  {
+    name: "DZAIRGAME",
+    image: "/brands/dz.svg",
+    href: "https://www.instagram.com/dzairgame/",
+    description: "E-SPORTS & GAMING COMMUNITY PLATFORM",
+  },
+];
+---
+
+<section class="space-y-4 mb-16">
+  <svg
+    width="129"
+    height="76"
+    viewBox="0 0 129 76"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="mx-auto size-16 lg:size-20"
+  >
+    <path
+      d="M6 6L65.2 65.21L122.79 7.62012"
+      stroke="black"
+      stroke-width="15"
+      stroke-miterlimit="10"></path>
+  </svg>
+  <h2 class="text-title font-bold text-center font-sans">
+    <span class="text-foreground-tertiary"> OUR </span>
+    BRANDS
+  </h2>
+  <DataGrid client:load data={brands} />
+  <div class="text-xl font-light text-center max-w-4xl mx-auto p-4 mt-16">
+    WE DON’T SEE MARKETS, WE SEE PLAYGROUND, ARENAS WHERE BOLD IDEAS COLLIDE
+    WITH REAL-WORLD NEEDS, FROM SKINCARE TO TECH , WELLNESS TO SPORT, EVERY
+    BRAND WE LAUNCH IS A MOVE TO CHALLENGE NORMS , REWRITE RULES, AND RAISE THE
+    STANDARD OF CARE.
+  </div>
+</section>

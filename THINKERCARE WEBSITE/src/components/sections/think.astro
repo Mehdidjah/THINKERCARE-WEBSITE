@@ -1,0 +1,100 @@
+---
+import { CountUp } from "../ui/animations/count-up";
+import { HighlightHover } from "../ui/animations/highlight-hover";
+import { Typewriter } from "../ui/animations/typewriter";
+import { DeBlur } from "../ui/animations/de-blur";
+---
+
+<!-- text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl -->
+<section class="p-4 max-w-7xl mx-auto mb-16">
+  <h2 class="text-title font-bold font-sans mb-4">
+    AT THINKERCARE, WE THINK BOLD
+  </h2>
+  <div class="grid grid-cols-2 gap-4">
+    <div class="relative flex flex-col">
+      <img
+        src="/assets/metal-blob.png"
+        alt="THINKERCARE GROUP"
+        class="absolute -top-14 left-1/2 -translate-x-1/2 w-90 lg:w-120 z-10 pointer-events-none"
+      />
+      <p
+        class="text-lg lg:text-2xl font-light z-20 absolute top-[calc(10vw+3rem)] lg:top-20"
+      >
+        <Typewriter
+          delay={40}
+          client:load
+          text="UNLEASHING \n BOUNDLESS \n CREATIVITY"
+        />
+      </p>
+      <p
+        class="text-lg lg:text-2xl font-light z-20 absolute top-[calc(20vw+15rem)] lg:top-120"
+      >
+        <Typewriter
+          delay={40}
+          client:load
+          text="WE DESIGN, \n BUILD, \n AND SCALE."
+        />
+      </p>
+      <p
+        class="text-5xl lg:text-8xl font-bold font-sans z-20 absolute top-60 left-42 md:left-51 xl:left-72 w-180 pointer-events-none"
+      >
+        <span class="pointer-events-auto">
+          <Typewriter delay={40} client:load text="THINK\nRIGHT.\nACT WELL." />
+        </span>
+      </p>
+      <p class="text-xl font-light text-justify mt-auto">
+        <Typewriter
+          delay={10}
+          split="three-letter"
+          client:load
+          text="WE BUILD BOLD, FORWARD-THINKING BRANDS ROOTED IN THEIR TIME, AT THE INTERSECTION OF SELF-CARE, CONSCIOUS NUTRITION, AND FUTURE-DRIVEN TECHNOLOGY. WHAT UNITES US IS A SHARED VISION: PLACING HUMANITY AT THE CENTER, TO CREATE DEEPLY BRANDS RESPONSIBLE, THAT ARE USEFUL, DESIRABLE, AND"
+        />
+      </p>
+    </div>
+    <div>
+      <div
+        class="flex justify-between pb-8 border-b border-foreground mb-18 gap-2"
+      >
+        <div class="text-start">
+          <h3 class="text-5xl font-sans">
+            +<b><CountUp client:load value={225} /></b>
+          </h3>
+          <p class="text-xl font-light">SUCCESSFUL <br /> PROJECTS</p>
+        </div>
+        <div class="text-center">
+          <h3 class="text-5xl font-sans">
+            +<b><CountUp client:load value={120} /></b>
+          </h3>
+          <p class="text-xl font-light">PRODUCTS <br /> LAUNCHED</p>
+        </div>
+        <div class="text-end">
+          <h3 class="text-5xl font-sans">
+            +<b><CountUp client:load value={1800} /></b>
+          </h3>
+          <p class="text-xl font-light">OPPORTUNITIES <br /> CREATED</p>
+        </div>
+      </div>
+      <p class="text-xl font-light text-justify mb-4 min-h-64">
+        <Typewriter
+          client:load
+          delay={10}
+          split="three-letter"
+          text="AT THINKEKCARE GROUP, WE BELIEVE IN THE TRANSFORMATIVE POWER OF IDEA THAT THOUGHTFUL IDEAS. AN IMPROVES LIVES. A SKINCARE RITUAL THAT BECOMES AN ACT OF TRUST. A FOOD PRODUCT THAT BOTH NOURISHES AND INSPIRES. HABITS AND A UNLOCKS PLATFORM OPPORTUNITIES. THAT RESHAPES"
+        />
+      </p>
+      <p class="text-xl font-light text-end mb-18">©2025</p>
+      <div
+        class="text-title text-justify [text-align-last:end] font-sans font-bold mb-4"
+      >
+        <HighlightHover client:load additional="34px"
+          >CARING IS WHAT</HighlightHover
+        >
+        <HighlightHover client:load additional="5px">WE DO BEST.</HighlightHover
+        >
+      </div>
+      <DeBlur client:load>
+        <img src="/assets/feet.png" alt="THINKERCARE GROUP" class="w-full" />
+      </DeBlur>
+    </div>
+  </div>
+</section>

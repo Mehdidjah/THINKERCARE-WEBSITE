@@ -1,0 +1,15 @@
+---
+import { CursorReact } from "./cursor.tsx";
+---
+
+<CursorReact client:load />
+
+<style>
+  :global(body),
+  :global(input),
+  :global(textarea),
+  :global(button),
+  :global(a) {
+    cursor: none;
+  }
+</style>

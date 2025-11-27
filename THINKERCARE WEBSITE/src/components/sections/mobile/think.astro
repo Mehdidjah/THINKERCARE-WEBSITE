@@ -1,0 +1,84 @@
+---
+import { CountUp } from "../../ui/animations/count-up";
+import { HighlightHover } from "../../ui/animations/highlight-hover";
+import { Typewriter } from "../../ui/animations/typewriter";
+import { DeBlur } from "../../ui/animations/de-blur";
+---
+
+<!-- text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl -->
+<section class="py-4 px-8 max-w-lg mx-auto mb-16">
+  <h2 class="text-title font-bold font-sans mb-4 text-center">
+    AT THINKERCARE, WE THINK BOLD
+  </h2>
+  <div class="flex justify-center items-center gap-4 relative">
+    <img src="/assets/metal-blob.png" alt="THINKERCARE GROUP" class="w-2/3" />
+    <div class="flex w-full h-full absolute top-0 left-1/2 -translate-x-1/4">
+      <div class="flex flex-1 items-center">
+        <p class="text-5xl font-bold font-sans z-20 pointer-events-none">
+          <span class="pointer-events-auto">
+            <Typewriter
+              delay={40}
+              client:load
+              text="THINK\nRIGHT.\nACT WELL."
+            />
+          </span>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="mt-6 max-w-sm mx-auto">
+    <div
+      class="flex justify-between pb-8 border-b border-foreground mb-2 gap-4"
+    >
+      <div class="text-start">
+        <h3 class="text-3xl font-sans">
+          +<b><CountUp client:load value={225} /></b>
+        </h3>
+        <p class="text-md font-light">SUCCESSFUL <br /> PROJECTS</p>
+      </div>
+      <div class="text-center">
+        <h3 class="text-3xl font-sans">
+          +<b><CountUp client:load value={120} /></b>
+        </h3>
+        <p class="text-md font-light">PRODUCTS <br /> LAUNCHED</p>
+      </div>
+      <div class="text-end">
+        <h3 class="text-3xl font-sans">
+          +<b><CountUp client:load value={1800} /></b>
+        </h3>
+        <p class="text-md font-light">OPPORTUNITIES <br /> CREATED</p>
+      </div>
+    </div>
+    <p class="text-sm font-light text-justify mb-4 min-h-64">
+      <Typewriter
+        client:load
+        delay={10}
+        split="three-letter"
+        text="AT THINKEKCARE GROUP, WE BELIEVE IN THE TRANSFORMATIVE POWER OF IDEA THAT THOUGHTFUL IDEAS. AN IMPROVES LIVES. A SKINCARE RITUAL THAT BECOMES AN ACT OF TRUST. A FOOD PRODUCT THAT BOTH NOURISHES AND INSPIRES. HABITS AND A UNLOCKS PLATFORM OPPORTUNITIES. THAT RESHAPES"
+      />
+    </p>
+  </div>
+  <div>
+    <div class="mb-8">
+      <DeBlur client:load>
+        <img src="/assets/feet.png" alt="THINKERCARE GROUP" class="w-full" />
+      </DeBlur>
+    </div>
+    <div class="flex flex-col text-title text-justify font-sans font-bold mb-4">
+      <span class="bg-primary font-bold w-fit">CARING IS WHAT</span>
+      <span class="w-fit">WE DO BEST.</span>
+
+      <div class="flex">
+        <div class="flex-1"></div>
+        <p class="flex-2 text-sm font-light text-justify mt-auto">
+          <Typewriter
+            delay={10}
+            split="three-letter"
+            client:load
+            text="WE BUILD BOLD, FORWARD-THINKING BRANDS ROOTED IN THEIR TIME, AT THE INTERSECTION OF SELF-CARE, CONSCIOUS NUTRITION, AND FUTURE-DRIVEN TECHNOLOGY. WHAT UNITES US IS A SHARED VISION: PLACING HUMANITY AT THE CENTER, TO CREATE DEEPLY BRANDS RESPONSIBLE, THAT ARE USEFUL, DESIRABLE, AND"
+          />
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

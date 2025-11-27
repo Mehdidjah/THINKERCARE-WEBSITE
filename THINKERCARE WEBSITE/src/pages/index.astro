@@ -1,0 +1,90 @@
+---
+import "../styles/global.css";
+import Header from "../components/sections/header.astro";
+import Brands from "../components/sections/brands.astro";
+
+import Ceo from "../components/sections/ceo.astro";
+import CeoMobile from "../components/sections/mobile/ceo.astro";
+
+import Equity from "../components/sections/equity.astro";
+import Playground from "../components/sections/playground.astro";
+import PlaygroundMobile from "../components/sections/mobile/playground.astro";
+
+import Scoreboard from "../components/sections/scoreboard.astro";
+import ScoreboardMobile from "../components/sections/mobile/scoreboard.astro";
+
+import Think from "../components/sections/think.astro";
+import ThinkMobile from "../components/sections/mobile/think.astro";
+import Worldwide from "../components/sections/worldwide.astro";
+import WorldwideMobile from "../components/sections/mobile/worldwide.astro";
+
+import Footer from "../components/ui/footer.astro";
+import Cursor from "../components/ui/cursor.astro";
+import FooterMobile from "../components/ui/footer-mobile.astro";
+---
+
+<html lang="en" class="overflow-x-hidden">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta
+      name="description"
+      content="ThinkerCare Group is a creative & production collective based in Algiers that transforms ideas into brands and products. Core capabilities include brand strategy, product design & prototyping, creative production, and small-to-medium scale manufacturing."
+    />
+    <meta name="generator" content="Astro" />
+    <title>THINKERCARE GROUP | when thinkers become makers</title>
+  </head>
+  <body class="space-y-4">
+    <Cursor />
+    <Header />
+
+    <div class="hidden sm:block">
+      <Think />
+    </div>
+    <div class="block sm:hidden">
+      <ThinkMobile />
+    </div>
+
+    <div class="hidden sm:block">
+      <Playground />
+    </div>
+    <div class="block sm:hidden">
+      <PlaygroundMobile />
+    </div>
+
+    <div class="hidden sm:block">
+      <Worldwide />
+    </div>
+    <div class="block sm:hidden">
+      <WorldwideMobile />
+    </div>
+
+    <div class="hidden sm:block">
+      <Scoreboard />
+    </div>
+    <div class="block sm:hidden">
+      <ScoreboardMobile />
+    </div>
+
+    <Brands />
+    <Equity />
+
+    <div class="hidden sm:block">
+      <Ceo />
+    </div>
+    <div class="block sm:hidden">
+      <CeoMobile />
+    </div>
+
+    <div class="hidden sm:block">
+      <Footer />
+    </div>
+    <div class="block sm:hidden">
+      <FooterMobile />
+    </div>
+  </body>
+</html>
