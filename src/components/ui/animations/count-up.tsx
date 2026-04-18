@@ -8,12 +8,16 @@ export const CountUp = ({
   value: number;
   duration?: number;
 }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const [count, setCount] = useState(0);
+  const hasAnimated = useRef(false);
   const inView = useInView(ref, { margin: "-50px" });
+  const finalValue = String(value);
 
   useEffect(() => {
-    if (!inView) return;
+    if (!inView || hasAnimated.current) return;
+
+    hasAnimated.current = true;
 
     let startTime: number;
     let lastUpdateTime = 0;
@@ -57,5 +61,19 @@ export const CountUp = ({
     };
   }, [value, duration, inView]);
 
-  return <span ref={ref}>{count || value}</span>;
+  return (
+    <span
+      ref={ref}
+      className="relative inline-block align-baseline"
+      style={{
+        minWidth: `${finalValue.length}ch`,
+        fontVariantNumeric: "tabular-nums",
+      }}
+    >
+      <span className="invisible" aria-hidden="true">
+        {finalValue}
+      </span>
+      <span className="absolute inset-0">{count}</span>
+    </span>
+  );
 };

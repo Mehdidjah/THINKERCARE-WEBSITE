@@ -31,6 +31,9 @@
 }
 
 @layer base {
+  html {
+    @apply bg-primary;
+  }
   body {
     @apply font-mono bg-background text-foreground overflow-x-hidden;
   }

@@ -10,7 +10,7 @@ export const Typewriter = ({
   split?: "letter" | "three-letter" | "word";
   delay?: number;
 }) => {
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { margin: "-50px 0px 50px 0px" });
   const [displayedText, setDisplayedText] = useState<string>("");
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -56,13 +56,13 @@ export const Typewriter = ({
   }, [text, delay, inView, split]);
 
   return (
-    <span ref={ref} className="min-h-5 min-w-5">
-      <span className="sr-only">{text}</span>
-      {displayedText.split("\n").map((line, index) => (
-        <React.Fragment key={index}>
-          {line} <br />
-        </React.Fragment>
-      ))}
+    <span ref={ref} className="relative inline-block whitespace-pre-line">
+      <span className="invisible" aria-hidden="true">
+        {text}
+      </span>
+      <span className="absolute inset-0 whitespace-pre-line">
+        {displayedText}
+      </span>
     </span>
   );
 };

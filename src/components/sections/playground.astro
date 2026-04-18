@@ -2,6 +2,9 @@
 import { FadeIn } from "../ui/animations/fade-in";
 import { Underline } from "../ui/animations/underline";
 import { PlaygroundCarousel } from "./playground-carousel";
+import { getPhoneSlides } from "./get-phone-slides";
+
+const slides = getPhoneSlides();
 ---
 
 <section class="space-y-4 mb-16">
@@ -31,9 +34,9 @@ import { PlaygroundCarousel } from "./playground-carousel";
   </div>
   <div class="bg-background-secondary py-6 lg:py-16">
     <div
-      class="gap-8 grid grid-cols-2 max-w-7xl mx-auto p-4 overflow-hidden mask-alpha mask-r-from-95%"
+      class="gap-8 grid grid-cols-2 items-center max-w-7xl mx-auto p-4 overflow-hidden mask-alpha mask-r-from-95%"
     >
-      <div class="text-xl font-ligh">
+      <div class="text-xl font-light self-center">
         <FadeIn delay={0.2} className="mb-4" client:load>
           ACROSS INDUSTRIES, OUR PORTFOLIO IS BUILT TO SHAPE THE FUTURE OF CARE:
         </FadeIn>
@@ -55,7 +58,7 @@ import { PlaygroundCarousel } from "./playground-carousel";
           BABYCARE: NOOM CARING SOLUTIONS FOR THE VERY FIRST STAGES OF LIFE.
         </FadeIn>
       </div>
-      <PlaygroundCarousel client:load />
+      <PlaygroundCarousel client:load slides={slides} />
     </div>
   </div>
 </section>

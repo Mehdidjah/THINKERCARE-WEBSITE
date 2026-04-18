@@ -21,6 +21,7 @@ import WorldwideMobile from "../components/sections/mobile/worldwide.astro";
 import Footer from "../components/ui/footer.astro";
 import Cursor from "../components/ui/cursor.astro";
 import FooterMobile from "../components/ui/footer-mobile.astro";
+import { Particles } from "../components/ui/particles";
 ---
 
 <html lang="en" class="overflow-x-hidden">
@@ -40,45 +41,60 @@ import FooterMobile from "../components/ui/footer-mobile.astro";
   </head>
   <body class="space-y-4">
     <Cursor />
-    <Header />
+    <main class="relative overflow-hidden bg-background">
+      <div class="pointer-events-none absolute inset-0 z-0">
+        <Particles
+          client:load
+          className="absolute inset-0 opacity-100 mix-blend-multiply"
+          quantity={480}
+          ease={80}
+          color="#000000"
+          refresh
+        />
+      </div>
 
-    <div class="hidden sm:block">
-      <Think />
-    </div>
-    <div class="block sm:hidden">
-      <ThinkMobile />
-    </div>
+      <div class="relative z-10 space-y-4">
+        <Header />
 
-    <div class="hidden sm:block">
-      <Playground />
-    </div>
-    <div class="block sm:hidden">
-      <PlaygroundMobile />
-    </div>
+        <div class="hidden sm:block">
+          <Think />
+        </div>
+        <div class="block sm:hidden">
+          <ThinkMobile />
+        </div>
 
-    <div class="hidden sm:block">
-      <Worldwide />
-    </div>
-    <div class="block sm:hidden">
-      <WorldwideMobile />
-    </div>
+        <div class="hidden sm:block">
+          <Playground />
+        </div>
+        <div class="block sm:hidden">
+          <PlaygroundMobile />
+        </div>
 
-    <div class="hidden sm:block">
-      <Scoreboard />
-    </div>
-    <div class="block sm:hidden">
-      <ScoreboardMobile />
-    </div>
+        <div class="hidden sm:block">
+          <Worldwide />
+        </div>
+        <div class="block sm:hidden">
+          <WorldwideMobile />
+        </div>
 
-    <Brands />
-    <Equity />
+        <div class="hidden sm:block">
+          <Scoreboard />
+        </div>
+        <div class="block sm:hidden">
+          <ScoreboardMobile />
+        </div>
 
-    <div class="hidden sm:block">
-      <Ceo />
-    </div>
-    <div class="block sm:hidden">
-      <CeoMobile />
-    </div>
+        <Brands />
+        <Equity />
+
+        <div class="hidden sm:block">
+          <Ceo />
+        </div>
+        <div class="block sm:hidden">
+          <CeoMobile />
+        </div>
+      </div>
+    </main>
 
     <div class="hidden sm:block">
       <Footer />
