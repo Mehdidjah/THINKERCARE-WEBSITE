@@ -16,8 +16,8 @@ export const partners = [
 ];
 
 export const heroWordmark = {
-  thinkerCare: "thinkercare".split(""),
-  group: "group".split(""),
+  thinkerCare: "THINKERCARE".split(""),
+  group: "GROUP".split(""),
   scanLinePositions: ["41%", "64%", "68%", "72%"],
   pixelColors: ["#ff80f5", "#009cff", "#fd7200", "#c8a900", "#00f384"],
 };

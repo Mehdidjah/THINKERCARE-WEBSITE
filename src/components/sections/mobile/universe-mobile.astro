@@ -34,24 +34,26 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
   <main id="main-mobile" class="border-x border-grid bg-background-secondary">
     <section class="border-b border-grid">
       <div class="tc-wordmark-row px-5 py-8">
-        <h1 class="tc-wordmark hero-wordmark" aria-label="thinkercare,group">
+        <h1 class="tc-wordmark hero-wordmark" aria-label="THINKERCARE,GROUP">
           <span class="hero-wordmark-text" aria-hidden="true">
-            {heroWordmark.thinkerCare.map((letter, index) => (
-              <span class="hero-wordmark-letter" style={`--letter-delay: ${240 + index * 75}ms`}>{letter}</span>
-            ))}
-            <span class="hero-comma-wrap" aria-hidden="true">
-              <span class="hero-comma-greenline"></span>
-              <span class="hero-comma-rect hero-comma-rect-1"></span>
-              <span class="hero-comma-rect hero-comma-rect-2"></span>
-              <span class="hero-comma-rect hero-comma-rect-3"></span>
-              <span class="hero-comma-rect hero-comma-rect-4"></span>
-              <span class="hero-comma-rect hero-comma-rect-5"></span>
-              <svg class="hero-comma-arc" viewBox="0 0 30 28" fill="none" aria-hidden="true">
-                <path fill="#08872B" d="M22.1 20.3C26.9 16.1 29.5 9.3 30 0H13.4C13.3 3.85 12.4 6.8 10.6 8.85C8.7 11 5.8 12 1.7 12H0V27.3H0.8C9.8 27.3 16.9 25 22.1 20.3Z"></path>
-              </svg>
-              <svg class="hero-comma-static" viewBox="0 0 35 62" fill="none" aria-hidden="true">
-                <path fill="#08872B" d="M34 17H17V34H33.5C33.1 43.3 30.5 50 25.7 54.2C20.6 58.8 13.5 61.1 4.5 61.1H3.7V46H5.4C9.4 46 12.3 44.9 14.2 42.8C15.9 40.8 16.9 37.9 17 34H0V0H34V17Z"></path>
-              </svg>
+            <span class="hero-wordmark-brand">
+              {heroWordmark.thinkerCare.map((letter, index) => (
+                <span class="hero-wordmark-letter" style={`--letter-delay: ${240 + index * 75}ms`}>{letter}</span>
+              ))}
+              <span class="hero-comma-wrap" aria-hidden="true">
+                <span class="hero-comma-greenline"></span>
+                <span class="hero-comma-rect hero-comma-rect-1"></span>
+                <span class="hero-comma-rect hero-comma-rect-2"></span>
+                <span class="hero-comma-rect hero-comma-rect-3"></span>
+                <span class="hero-comma-rect hero-comma-rect-4"></span>
+                <span class="hero-comma-rect hero-comma-rect-5"></span>
+                <svg class="hero-comma-arc" viewBox="0 0 30 28" fill="none" aria-hidden="true">
+                  <path fill="#08872B" d="M22.1 20.3C26.9 16.1 29.5 9.3 30 0H13.4C13.3 3.85 12.4 6.8 10.6 8.85C8.7 11 5.8 12 1.7 12H0V27.3H0.8C9.8 27.3 16.9 25 22.1 20.3Z"></path>
+                </svg>
+                <svg class="hero-comma-static" viewBox="0 0 35 62" fill="none" aria-hidden="true">
+                  <path fill="#08872B" d="M34 17H17V34H33.5C33.1 43.3 30.5 50 25.7 54.2C20.6 58.8 13.5 61.1 4.5 61.1H3.7V46H5.4C9.4 46 12.3 44.9 14.2 42.8C15.9 40.8 16.9 37.9 17 34H0V0H34V17Z"></path>
+                </svg>
+              </span>
             </span>
             <span class="hero-wordmark-group">
               {heroWordmark.group.map((letter, index) => (

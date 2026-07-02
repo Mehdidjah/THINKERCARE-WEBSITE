@@ -513,7 +513,7 @@
     background: var(--site-bg);
     color: #000000;
     text-transform: none;
-    font-size: clamp(64px, 11vw, 180px);
+    font-size: clamp(64px, 8.8vw, 136px);
     line-height: 0.9;
     font-weight: 800;
     letter-spacing: -0.06em;
@@ -526,7 +526,7 @@
     z-index: 1;
     display: inline-flex;
     max-width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: flex-start;
     justify-content: center;
   }
@@ -541,18 +541,25 @@
     will-change: transform, opacity;
   }
 
+  .hero-wordmark-brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: flex-start;
+    white-space: nowrap;
+  }
+
   .hero-comma-wrap {
     position: relative;
     display: inline-block;
     flex: 0 0 auto;
     align-self: flex-start;
-    width: calc(var(--mark-cell) * 2.7);
+    width: calc(var(--mark-cell) * 2.02);
     height: calc(var(--mark-cell) * 4.25);
-    margin-left: 0.02em;
-    margin-right: 0.1em;
+    margin-left: 0;
+    margin-right: 0.01em;
     overflow: visible;
     vertical-align: top;
-    transform: translateY(0.03em);
+    transform: translateY(0.16em);
     --mark-cell: clamp(14px, 1.7vw, 24px);
   }
 
@@ -661,7 +668,7 @@
     }
 
     .hero-wordmark {
-      font-size: clamp(64px, 11.8cqw, 180px);
+      font-size: clamp(64px, 8.6cqw, 136px);
     }
   }
 
@@ -1710,7 +1717,7 @@
 
 @media (max-width: 640px) {
   .hero-comma-wrap {
-    width: calc(var(--mark-cell) * 2.7);
+    width: calc(var(--mark-cell) * 2.02);
     height: calc(var(--mark-cell) * 4.25);
     --mark-cell: clamp(8px, 3.2vw, 14px);
   }
@@ -1730,12 +1737,13 @@
 
   .hero-wordmark {
     padding: 18px 8px;
-    font-size: clamp(42px, 15vw, 80px);
+    font-size: clamp(40px, 12.5vw, 66px);
     line-height: 0.92;
     letter-spacing: -0.058em;
   }
 
   .hero-wordmark-text {
+    flex-wrap: wrap;
     justify-content: center;
   }
 
