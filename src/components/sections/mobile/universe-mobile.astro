@@ -41,8 +41,8 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
             ))}
             <span class="hero-comma-wrap">
               <span class="hero-wordmark-comma" style="--group-delay: 1280ms">,</span>
-              {heroWordmark.pixelColors.map((color, index) => (
-                <span class={`hero-wordmark-pixel hero-wordmark-pixel-${index + 1}`} style={`--pixel-delay: ${1360 + index * 90}ms; --c: ${color}`}></span>
+              {heroWordmark.pixelColors.map((_, index) => (
+                <span class={`hero-wordmark-pixel hero-wordmark-pixel-${index + 1}`}></span>
               ))}
               <svg class="hero-wordmark-arc" viewBox="0 0 40 40" aria-hidden="true">
                 <path pathLength="1" d="M 9 8 C 29 6 34 19 24 31" />
