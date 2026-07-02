@@ -1,0 +1,389 @@
+---
+import PlaceholderSlot from "../../ui/placeholder-slot.astro";
+import { SplineScene } from "../../ui/splite";
+import { agenda, brands, heroWordmark, highlights, included, marquee, metrics, partners } from "../universe-data";
+
+const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
+---
+
+<div class="lg:hidden">
+  <header class="mobile-site-header">
+    <div class="mobile-site-logo-row">
+      <a href="#main-mobile" aria-label="ThinkerCare Group home">
+        <img src="/assets/logo.svg" alt="ThinkerCare Group" />
+      </a>
+    </div>
+    <details class="mobile-site-menu">
+      <summary class="mobile-site-summary">
+        <span>Menu</span>
+        <span aria-hidden="true">Open</span>
+      </summary>
+      <div class="mobile-site-backdrop" aria-hidden="true"></div>
+      <nav class="mobile-site-panel" aria-label="Mobile primary">
+        <a href="#brands-mobile" class="mobile-site-link">Brands</a>
+        <a href="#agenda-mobile" class="mobile-site-link">Scoreboard</a>
+        <a href="#contact-mobile" class="mobile-site-link">Contact</a>
+        <a href="#contact-mobile" class="mobile-site-cta">
+          Get in touch <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </details>
+  </header>
+  <div class="mobile-site-header-spacer" aria-hidden="true"></div>
+
+  <main id="main-mobile" class="border-x border-grid bg-background-secondary">
+    <section class="border-b border-grid">
+      <div class="tc-wordmark-row px-5 py-8">
+        <h1 class="tc-wordmark hero-wordmark" aria-label="thinkercare,group">
+          <span class="hero-wordmark-text" aria-hidden="true">
+            {heroWordmark.thinkerCare.map((letter, index) => (
+              <span class="hero-wordmark-letter" style={`--letter-delay: ${240 + index * 75}ms`}>{letter}</span>
+            ))}
+            <span class="hero-comma-wrap">
+              <span class="hero-wordmark-comma" style="--group-delay: 1280ms">,</span>
+              {heroWordmark.pixelColors.map((color, index) => (
+                <span class={`hero-wordmark-pixel hero-wordmark-pixel-${index + 1}`} style={`--pixel-delay: ${1360 + index * 90}ms; --c: ${color}`}></span>
+              ))}
+              <svg class="hero-wordmark-arc" viewBox="0 0 40 40" aria-hidden="true">
+                <path pathLength="1" d="M 9 8 C 29 6 34 19 24 31" />
+              </svg>
+            </span>
+            <span class="hero-wordmark-group">
+              {heroWordmark.group.map((letter, index) => (
+                <span class="hero-wordmark-group-letter" style={`--group-delay: ${1355 + index * 75}ms`}>{letter}</span>
+              ))}
+            </span>
+          </span>
+          {heroWordmark.scanLinePositions.map((position, index) => (
+            <span class="hero-wordmark-scanline" style={`--x: ${position}; --scan-delay: ${50 + index * 75}ms`}></span>
+          ))}
+        </h1>
+      </div>
+      <div class="hero-video-placeholder min-h-[390px] border-y border-grid" aria-label="Hero video placeholder">
+        <button type="button" aria-label="Pause hero video" class="absolute bottom-5 right-5 z-10 grid size-12 place-items-center rounded-full bg-black/75 font-sans text-base font-black text-white transition hover:bg-black">
+          ||
+        </button>
+      </div>
+      <div class="grid grid-cols-2 border-b border-grid font-mono text-sm">
+        <p class="border-r border-grid px-5 py-5">algiers / care economy</p>
+        <p class="px-5 py-5 text-right">in-market</p>
+      </div>
+      <div class="border-b border-grid px-5 py-7">
+        <p class="font-sans text-4xl font-semibold leading-[1.02] tracking-[-0.05em]">
+          We transform thoughtful ideas into brands and products.
+        </p>
+      </div>
+      <div class="p-5">
+        <a href="#contact-mobile" class="big-cta">
+          Get in touch <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </section>
+
+    <div class="ticker border-b border-grid bg-primary text-black" data-ticker>
+      <button type="button" class="ticker-pause no-trail" aria-label="Pause ticker" data-ticker-toggle>Pause</button>
+      <div class="ticker-track">
+        {[...marquee, ...marquee, ...marquee, ...marquee].map((item) => (
+          <a href="#contact-mobile" class="ticker-item">
+            {item} <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <section class="border-b border-grid">
+      <div class="border-b border-grid px-5 py-8">
+        <h2 class="font-sans text-5xl font-semibold leading-[0.96] tracking-[-0.06em]">
+          ThinkerCare is where care brands become movements
+        </h2>
+      </div>
+      <PlaceholderSlot label="experience-image-slot" variant="green" class="min-h-[300px] border-b border-grid" />
+      <div class="px-5 py-8">
+        <p class="font-mono text-base text-foreground-secondary">dev.experience()</p>
+        <p class="mt-8 font-sans text-3xl font-semibold leading-[1.06] tracking-[-0.04em]">
+          Ideas move from strategy to design, production, launch, and scale.
+        </p>
+      </div>
+    </section>
+
+    <section class="border-b border-grid">
+      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="min-h-[330px] border-b border-grid" />
+      <div class="border-b border-grid p-5">
+        <div class="pixel-band pixel-band-warm h-40"></div>
+      </div>
+      <div class="px-5 py-8">
+        <p class="font-mono text-base text-foreground-secondary">dev.learn()</p>
+        <h2 class="mt-8 font-sans text-4xl font-semibold leading-[1.04] tracking-[-0.04em]">
+          Build bold, forward-thinking brands rooted in their time.
+        </h2>
+      </div>
+    </section>
+
+    <section class="border-b border-grid">
+      <div class="px-5 py-8">
+        <p class="font-mono text-base">dev.connect()</p>
+        <h2 class="mt-20 font-sans text-4xl font-semibold leading-[1.04] tracking-[-0.05em]">
+          Across industries, our portfolio is built to shape the future of care.
+        </h2>
+      </div>
+      <div class="grid grid-cols-2 border-t border-grid">
+        <div class="brand-tile border-r border-b border-grid"><span>sport and health</span></div>
+        <div class="brand-tile border-b border-grid"><span>dermo-cosmetics</span></div>
+        <div class="brand-tile border-r border-grid"><span>tea and wellness</span></div>
+        <div class="brand-tile"><span>technology</span></div>
+      </div>
+    </section>
+
+    <section id="stats-mobile" class="border-b border-grid">
+      <div class="border-b border-grid px-5 py-8">
+        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+          scoreboard/
+        </h2>
+      </div>
+      <div>
+        {metrics.map((metric) => (
+          <article class="border-b border-grid px-5 py-8 last:border-b-0">
+            <p class="font-sans text-6xl font-black leading-none tracking-[-0.07em] text-primary">
+              {metric.value}
+            </p>
+            <h3 class="mt-6 font-sans text-3xl font-semibold leading-none tracking-[-0.04em]">
+              {metric.label}
+            </h3>
+            <p class="mt-4 text-lg leading-snug text-foreground-secondary">{metric.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-b border-grid">
+      <div class="border-b border-grid px-5 py-8">
+        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+          choose-your-track/
+        </h2>
+      </div>
+      <div class="grid grid-cols-3 border-b border-grid">
+        <button type="button" class="tab-cell active">Brand</button>
+        <button type="button" class="tab-cell">Build</button>
+        <button type="button" class="tab-cell">Equity</button>
+      </div>
+      <article class="pass-card">
+        <h3>brand venture/</h3>
+        <p>
+          Join ThinkerCare to design, build, and scale a product with strategy, creative direction, production, and launch support.
+        </p>
+        <div class="pass-price">from idea</div>
+        <a href="#contact-mobile" class="big-cta">Get in touch <span aria-hidden="true">↗</span></a>
+        <div class="included">
+          <h4>What&apos;s included</h4>
+          <ul>
+            {included.slice(0, 4).map((item) => <li>{item}</li>)}
+          </ul>
+        </div>
+      </article>
+      <article class="pass-card border-t border-grid">
+        <h3>equity partner/</h3>
+        <p>
+          Bring capital, product, distribution, or technology into a group built around trust, vision, and long-term value.
+        </p>
+        <div class="pass-price">long term</div>
+        <a href="#contact-mobile" class="ghost-cta">Get in touch <span aria-hidden="true">↗</span></a>
+      </article>
+    </section>
+
+    <section id="agenda-mobile" class="agenda-section">
+      <div class="agenda-shell">
+        <div class="agenda-heading">
+          <h2>agenda/</h2>
+        </div>
+      {agenda.map((group) => (
+        <section class={`agenda-day ${group.accent}`}>
+          <h3 class="agenda-day-label">
+            {group.day}
+          </h3>
+          <div class="agenda-day-items">
+            {group.items.map((item) => (
+              <article class="agenda-item">
+                <p class="agenda-time">{item.time}</p>
+                <div>
+                  <h4 class="agenda-title">{item.title}</h4>
+                  <p class="agenda-body">{item.body}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      ))}
+      </div>
+    </section>
+
+    <section class="highlight-section border-b border-grid" id="highlights-mobile">
+      <div class="pixel-band h-36 border-b border-grid"></div>
+      <div class="flex min-h-36 items-end border-b border-grid px-5 pb-8 pt-10">
+        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+          selected-highlights/
+        </h2>
+      </div>
+      <div class="bg-background-secondary">
+        {highlights.map((item, index) => (
+          <button type="button" class={`session-row highlight-trigger highlight-trigger-${index}`}>
+            <span class={`session-stripe stripe-${index}`}></span>
+            <span class={`mini-placeholder stripe-${index}`}>
+              {item.video ? (
+                <video src={item.video} poster={item.poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              ) : item.poster ? (
+                <img src={item.poster} alt="" loading="lazy" aria-hidden="true" />
+              ) : null}
+            </span>
+            <span>{item.name}</span>
+          </button>
+        ))}
+      </div>
+      <div class="highlight-detail p-5">
+        <div class="highlight-media relative aspect-video overflow-hidden bg-black">
+          {highlights.map((item, index) => (
+            <div class={`highlight-media-item highlight-media-item-${index}`}>
+              {item.video ? (
+                <video class="highlight-video" controls autoplay muted loop playsinline preload="metadata" poster={item.poster}>
+                  <source src={item.video} type={item.type} />
+                </video>
+              ) : item.poster ? (
+                <>
+                  <img src={item.poster} alt="" class="highlight-video" loading="lazy" />
+                  <button type="button" aria-label="Play highlight placeholder" class="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-3xl text-black backdrop-blur">
+                    ▶
+                  </button>
+                </>
+              ) : (
+                <>
+                  <PlaceholderSlot label="highlight-video-slot" variant="dark" class="h-full" />
+                  <button type="button" aria-label="Play highlight" class="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-3xl text-black backdrop-blur">
+                    ▶
+                  </button>
+                </>
+              )}
+            </div>
+          ))}
+        </div>
+        <div class="mt-6 flex items-start justify-between gap-4">
+          <div class="highlight-copy">
+            {highlights.map((item, index) => (
+              <div class={`highlight-copy-item highlight-copy-item-${index}`}>
+                <h3 class="font-sans text-3xl font-semibold leading-[1.03] tracking-[-0.05em]">
+                  {item.title}
+                </h3>
+                <p class="mt-4 text-base leading-snug text-foreground-secondary">
+                  {item.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div class="flex shrink-0 gap-2">
+            <button type="button" aria-label="Previous highlight" class="media-nav-button">←</button>
+            <button type="button" aria-label="Next highlight" class="media-nav-button">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands-mobile" class="border-b border-grid">
+      <div class="border-b border-grid px-5 py-8">
+        <p class="font-mono text-base">your-story-starts-here</p>
+      </div>
+      <div class="border-b border-grid px-5 py-8">
+        <div class="mb-8 font-sans text-8xl font-black leading-none text-[#b6ae32]">,,</div>
+        <p class="font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em]">
+          We do not see markets. We see playgrounds where bold ideas meet real-world needs.
+        </p>
+      </div>
+      <div class="grid grid-cols-2">
+        {brands.map((brand) => (
+          <a href={brand.href} target="_blank" rel="noreferrer" class="logo-cell">
+            <img src={brand.image} alt={brand.name} />
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-b border-grid">
+      <div class="border-b border-grid px-5 py-8">
+        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+          equity-partners/
+        </h2>
+        <p class="mt-6 text-xl leading-snug text-foreground-secondary">
+          Equity partnerships are built on trust, vision, and long-term value.
+        </p>
+      </div>
+      <div class="grid grid-cols-1">
+        {partners.map((partner) => (
+          <a href={partner.href} target="_blank" rel="noreferrer" class="logo-cell">
+            <img src={partner.image} alt={partner.name} />
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-b border-grid">
+      <PlaceholderSlot label="care-story-image-slot" variant="green" class="min-h-[320px] border-b border-grid" />
+      <div class="px-5 py-8">
+        <p class="font-mono text-base">attendee:</p>
+        <blockquote class="mt-16 font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em]">
+          Caring is what we do best.
+        </blockquote>
+        <p class="mt-6 text-lg leading-snug text-foreground-secondary">
+          Our shared vision places humanity at the center, creating brands that are useful, desirable, and responsible.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact-mobile" class="border-b border-grid">
+      <div class="contact-model-shell contact-model-shell-mobile border-b border-grid">
+        <SplineScene client:visible scene={contactSplineScene} className="contact-spline-scene" backgroundColor="#e9edec" />
+      </div>
+      <form class="grid gap-0 bg-background" action="https://sheetdb.io/api/v1/5ivvxdan051gq" method="post">
+        <label class="form-row">
+          <span>Full name</span>
+          <input type="text" name="data[fullname]" required />
+        </label>
+        <label class="form-row">
+          <span>Email</span>
+          <input type="email" name="data[email]" required />
+        </label>
+        <label class="form-row">
+          <span>Phone</span>
+          <input type="tel" name="data[phone]" inputmode="numeric" required />
+        </label>
+        <label class="form-row">
+          <span>Message</span>
+          <input type="text" name="data[message]" maxlength="200" required />
+        </label>
+        <div class="p-5">
+          <button type="submit" class="big-cta w-full">
+            Send message <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="overflow-hidden border-x border-b border-grid bg-background-secondary text-foreground">
+    <div class="tc-wordmark-row border-b border-grid px-5 py-8">
+      <h2 class="tc-wordmark tc-wordmark-footer">
+        <span>THINKER</span><br /><span>CARE</span><span class="tc-wordmark-accent">,</span><span>GROUP</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-2 border-b border-grid">
+      <p class="footer-cell col-span-2 font-mono text-foreground-secondary">© 2026 THINKERCARE GROUP.</p>
+      <a href="#brands-mobile" class="footer-cell">Brands</a>
+      <a href="#agenda-mobile" class="footer-cell">Scoreboard</a>
+      <a href="#contact-mobile" class="footer-cell">Contact</a>
+      <a href="https://www.instagram.com/thinkercaregroup" target="_blank" rel="noreferrer" class="footer-cell">Instagram</a>
+      <a href="https://www.linkedin.com/company/thinkercare-group/" target="_blank" rel="noreferrer" class="footer-cell">LinkedIn</a>
+      <a href="mailto:contact@thinkercaregroup.com" class="footer-cell footer-cell-contact col-span-2 justify-between gap-4 font-mono">
+        <span>contact@thinkercaregroup.com</span> <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <a href="#contact-mobile" class="footer-command no-trail">
+      echo "start-a-project" &gt;&gt; thinkercare/group <span aria-hidden="true">↗</span>
+    </a>
+  </footer>
+</div>

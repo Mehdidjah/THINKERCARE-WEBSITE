@@ -2,37 +2,18 @@
 import { Underline } from "./animations/underline";
 import { DotAnimation } from "./animations/dot-animation";
 import { Input } from "./input";
+import { SplineScene } from "./splite";
 import { AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
+
+const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 ---
 
 <footer class="text-footer-foreground bg-footer-background mb-0">
   <div class="max-w-7xl mx-auto px-12 py-16 space-y-12 relative">
     <div class="flex flex-col md:grid grid-cols-2 gap-12">
-      <div class="space-y-2 relative">
-        <div
-          class="z-50 absolute text-lg text-primary left-0 top-1/3 -translate-y-1/2 font-light font-mono whitespace-nowrap tracking-widest"
-        >
-          FEEL FREE TO
-        </div>
-        <div
-          class="z-50 absolute text-lg text-primary right-0 top-1/2 translate-y-1/2 font-light font-mono whitespace-nowrap tracking-widest"
-        >
-          REACH US
-        </div>
-        <div class="text-6xl text-center font-extrabold font-sans scale-y-120">
-          LET&apos;S
-        </div>
-        <div
-          class="text-6xl text-center font-extrabold font-sans scale-y-120 relative"
-        >
-          GET IN
-        </div>
-        <div
-          class="text-6xl text-center font-extrabold font-sans scale-y-120 relative"
-        >
-          TOUCH
-        </div>
+      <div class="contact-model-shell contact-model-shell-mobile">
+        <SplineScene client:visible scene={contactSplineScene} className="contact-spline-scene" backgroundColor="#f3f3f3" />
       </div>
       <form
         class="grid grid-cols-2 gap-x-8 gap-y-12"

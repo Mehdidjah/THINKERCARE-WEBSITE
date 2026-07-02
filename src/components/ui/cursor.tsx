@@ -1,189 +1,71 @@
-import { useEffect, useState, useRef } from "react";
-import { motion } from "motion/react";
+"use client"
 
-function throttle<T extends (...args: any[]) => void>(fn: T, limit: number): T {
-  let lastCall = 0;
-  let lastArgs: any;
-  let timeout: any;
-  return function (this: any, ...args: any[]) {
-    const now = Date.now();
-    lastArgs = args;
-    if (now - lastCall >= limit) {
-      lastCall = now;
-      fn.apply(this, args);
-    } else {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        lastCall = Date.now();
-        fn.apply(this, lastArgs);
-      }, limit - (now - lastCall));
-    }
-  } as T;
-}
+import { useEffect, useMemo, useRef } from "react"
 
-export const CursorReact = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  enum CursorOverTarget {
-    Default = "DEFAULT",
-    Text = "TEXT",
-    Link = "LINK",
-    Button = "BUTTON",
-  }
+const glyphs = ["-", "/", ")", ".", "+", "=", ">", "<", "*", "&", "("]
+const colors = ["#ae85ff", "#f73678", "#c05200", "#583af7", "#5fed83", "#bba00a"]
 
-  const [overTarget, setOverTarget] = useState<CursorOverTarget>(
-    CursorOverTarget.Default
-  );
-  const [textLineHeight, setTextLineHeight] = useState(20);
-
-  const computeActualLineHeight = (
-    computedStyle: CSSStyleDeclaration
-  ): number => {
-    const lineHeight = computedStyle.lineHeight;
-    const fontSize = parseFloat(computedStyle.fontSize);
-    let actualLineHeight = 20;
-
-    if (lineHeight === "normal") {
-      actualLineHeight = fontSize * 1.2;
-    } else if (lineHeight.endsWith("px")) {
-      actualLineHeight = parseFloat(lineHeight);
-    } else if (lineHeight.endsWith("em") || lineHeight.endsWith("rem")) {
-      actualLineHeight = parseFloat(lineHeight) * fontSize;
-    } else if (!isNaN(parseFloat(lineHeight))) {
-      actualLineHeight = parseFloat(lineHeight) * fontSize;
-    }
-
-    return actualLineHeight;
-  };
-
-  const getCursorTargetAt = (x: number, y: number): CursorOverTarget => {
-    const element = document.elementFromPoint(x, y);
-    if (!element) {
-      return CursorOverTarget.Default;
-    }
-
-    const buttonLike = (element as HTMLElement).closest(
-      'button,[role="button"],input[type="button"],input[type="submit"],input[type="reset"]'
-    );
-    if (buttonLike) {
-      return CursorOverTarget.Button;
-    }
-
-    const anchor = (element as HTMLElement).closest("a");
-    if (anchor) {
-      return CursorOverTarget.Link;
-    }
-
-    const computedStyle = window.getComputedStyle(element);
-    if (
-      computedStyle.cursor === "text" ||
-      element.tagName === "INPUT" ||
-      element.tagName === "TEXTAREA" ||
-      (element as HTMLElement).contentEditable === "true"
-    ) {
-      setTextLineHeight(computeActualLineHeight(computedStyle));
-      return CursorOverTarget.Text;
-    }
-
-    try {
-      const textWalker = document.createTreeWalker(
-        element,
-        NodeFilter.SHOW_TEXT,
-        null
-      );
-
-      let textNode = textWalker.nextNode();
-      while (textNode) {
-        if (textNode.textContent?.trim()) {
-          const range = document.createRange();
-          range.selectNodeContents(textNode);
-          const rects = range.getClientRects();
-
-          for (let i = 0; i < rects.length; i++) {
-            const r = rects[i];
-            if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
-              const styleForText = window.getComputedStyle(
-                (textNode.parentElement || element) as Element
-              );
-              setTextLineHeight(computeActualLineHeight(styleForText));
-              return CursorOverTarget.Text;
-            }
-          }
-        }
-        textNode = textWalker.nextNode();
-      }
-    } catch (e) {
-      // Ignore errors
-    }
-
-    return CursorOverTarget.Default;
-  };
-
-  const throttledUpdate = useRef(
-    throttle((e: MouseEvent) => {
-      const x = e.clientX;
-      const y = e.clientY;
-      setPosition({ x, y });
-      setOverTarget(getCursorTargetAt(x, y));
-    }, 1000 / 24) // ~24fps
-  ).current;
+export default function Cursor() {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const timers = useRef<number[]>([])
+  const blocks = useMemo(() => Array.from({ length: 10 }), [])
 
   useEffect(() => {
-    window.addEventListener("mousemove", throttledUpdate);
+    const root = rootRef.current
+    if (!root) return
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches
+    if (reduceMotion || coarsePointer) return
+
+    const trailBlocks = Array.from(root.querySelectorAll<HTMLElement>(".cursor-trail-block"))
+    const skipSelector = "a, button, input, textarea, select, label, [role='button'], .no-trail"
+    const activeSelector = "main, footer, .cursor-trail-zone"
+    let index = 0
+
+    const random = <T,>(items: T[]) => items[Math.floor(Math.random() * items.length)]
+    const snap = (value: number) => Math.round(value / 20) * 20
+
+    const handleMove = (event: PointerEvent) => {
+      if (event.pointerType && event.pointerType !== "mouse") return
+      const target = event.target
+      if (!(target instanceof Element)) return
+      if (!target.closest(activeSelector) || target.closest(skipSelector)) return
+
+      const blockIndex = index % trailBlocks.length
+      const block = trailBlocks[blockIndex]
+      const color = block?.querySelector<HTMLElement>(".cursor-trail-color")
+      if (!block || !color) return
+
+      index += 1
+      const selectedColor = random(colors)
+      block.classList.remove("active")
+      block.style.transform = `translate3d(${snap(event.clientX)}px, ${snap(event.clientY)}px, 0)`
+      color.textContent = random(glyphs)
+      color.style.backgroundColor = selectedColor
+      color.style.color = selectedColor === "#583af7" ? "#ffffff" : "#000000"
+
+      window.requestAnimationFrame(() => block.classList.add("active"))
+      window.clearTimeout(timers.current[blockIndex])
+      timers.current[blockIndex] = window.setTimeout(() => {
+        block.classList.remove("active")
+      }, 100 + Math.random() * 300)
+    }
+
+    window.addEventListener("pointermove", handleMove, { passive: true })
     return () => {
-      window.removeEventListener("mousemove", throttledUpdate);
-    };
-  }, [throttledUpdate]);
+      window.removeEventListener("pointermove", handleMove)
+      timers.current.forEach((timer) => window.clearTimeout(timer))
+    }
+  }, [])
 
   return (
-    <motion.div
-      className={`fixed backdrop-invert border border-foreground backdrop-saturate-0 pointer-events-none z-1000 backdrop-contrast-[200] ${
-        overTarget === CursorOverTarget.Text
-          ? "rounded-sm" // Line cursor for text
-          : overTarget === CursorOverTarget.Link ||
-            overTarget === CursorOverTarget.Button
-          ? "" // Triangle for links/buttons via clip-path
-          : "rounded-full" // Circle cursor for everything else
-      }`}
-      style={{
-        clipPath:
-          overTarget === CursorOverTarget.Link ||
-          overTarget === CursorOverTarget.Button
-            ? "polygon(50% 0%, 0% 100%, 100% 100%)"
-            : "none",
-      }}
-      animate={{
-        left:
-          overTarget === CursorOverTarget.Text
-            ? position.x - 1
-            : overTarget === CursorOverTarget.Link ||
-              overTarget === CursorOverTarget.Button
-            ? position.x - 35 / 2 // half of triangle width (18)
-            : position.x - 35 / 2,
-        top:
-          overTarget === CursorOverTarget.Text
-            ? position.y - textLineHeight / 2
-            : overTarget === CursorOverTarget.Link ||
-              overTarget === CursorOverTarget.Button
-            ? position.y - 4 // triangle tip aligns with pointer
-            : position.y - 8,
-        width:
-          overTarget === CursorOverTarget.Text
-            ? textLineHeight > 30
-              ? 8
-              : 6
-            : overTarget === CursorOverTarget.Link ||
-              overTarget === CursorOverTarget.Button
-            ? 20
-            : 35,
-        height:
-          overTarget === CursorOverTarget.Text
-            ? `${textLineHeight * 0.8}px`
-            : overTarget === CursorOverTarget.Link ||
-              overTarget === CursorOverTarget.Button
-            ? 24
-            : 35,
-      }}
-      transition={{ duration: 0.1, ease: "easeOut" }}
-    />
-  );
-};
+    <div ref={rootRef} id="cursor-trail" className="cursor-trail" aria-hidden="true">
+      {blocks.map((_, index) => (
+        <span className="cursor-trail-block" key={index}>
+          <span className="cursor-trail-color" />
+        </span>
+      ))}
+    </div>
+  )
+}

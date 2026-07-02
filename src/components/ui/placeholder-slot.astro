@@ -1,0 +1,13 @@
+---
+interface Props {
+  label: string;
+  variant?: "green" | "blue" | "warm" | "dark";
+  class?: string;
+}
+
+const { label, variant = "green", class: className = "" } = Astro.props;
+---
+
+<div class={`placeholder-slot placeholder-slot-${variant} ${className}`}>
+  <span>{label}</span>
+</div>

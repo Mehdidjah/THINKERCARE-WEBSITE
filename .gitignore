@@ -17,6 +17,16 @@ package-lock.json
 .eslintcache
 .pnpm-store
 
+# local agent/skill installation artifacts
+.agents/
+skills-lock.json
+
+# large source media; keep optimized deploy assets or posters instead
+public/video/**/*.mp4
+public/video/**/*.mov
+public/video/**/*.MP4
+public/video/**/*.MOV
+
 # do not commit .env files or any files that end with `.env`
 *.env
 

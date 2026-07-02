@@ -1,15 +1,63 @@
 ---
-import { CursorReact } from "./cursor.tsx";
+const blockCount = 10;
 ---
 
-<CursorReact client:load />
+<div id="cursor-trail" class="cursor-trail" aria-hidden="true">
+  {Array.from({ length: blockCount }).map(() => (
+    <span class="cursor-trail-block">
+      <span class="cursor-trail-color"></span>
+    </span>
+  ))}
+</div>
 
-<style>
-  :global(body),
-  :global(input),
-  :global(textarea),
-  :global(button),
-  :global(a) {
-    cursor: none;
-  }
-</style>
+<script is:inline>
+  (() => {
+    const root = document.getElementById("cursor-trail");
+    if (!root) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+    if (reduceMotion || coarsePointer) return;
+
+    const blocks = Array.from(root.querySelectorAll(".cursor-trail-block"));
+    const glyphs = ["-", "/", ")", ".", "+", "=", ">", "<", "*", "&", "("];
+    const colors = ["#ae85ff", "#f73678", "#c05200", "#583af7", "#5fed83", "#bba00a"];
+    const skipSelector = "a, button, input, textarea, select, label, [role='button'], .no-trail";
+    const activeSelector = "main, footer, .cursor-trail-zone";
+    let index = 0;
+
+    const random = (items) => items[Math.floor(Math.random() * items.length)];
+    const snap = (value) => Math.round(value / 20) * 20;
+
+    const handleMove = (event) => {
+      if (event.pointerType && event.pointerType !== "mouse") return;
+      const target = event.target;
+      if (!(target instanceof Element)) return;
+      if (!target.closest(activeSelector) || target.closest(skipSelector)) return;
+
+      const block = blocks[index % blocks.length];
+      if (!block) return;
+      const color = block.querySelector(".cursor-trail-color");
+      if (!color) return;
+
+      const selectedColor = random(colors);
+      index += 1;
+      block.classList.remove("active");
+      block.style.transform = `translate3d(${snap(event.clientX)}px, ${snap(event.clientY)}px, 0)`;
+      color.textContent = random(glyphs);
+      color.style.backgroundColor = selectedColor;
+      color.style.color = selectedColor === "#583af7" ? "#ffffff" : "#000000";
+
+      window.requestAnimationFrame(() => {
+        block.classList.add("active");
+      });
+
+      window.clearTimeout(block._trailTimer);
+      block._trailTimer = window.setTimeout(() => {
+        block.classList.remove("active");
+      }, 100 + Math.random() * 300);
+    };
+
+    window.addEventListener("pointermove", handleMove, { passive: true });
+  })();
+</script>

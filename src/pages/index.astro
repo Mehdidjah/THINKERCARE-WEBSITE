@@ -1,106 +1,92 @@
 ---
-import "../styles/global.css";
-import Header from "../components/sections/header.astro";
-import Brands from "../components/sections/brands.astro";
-
-import Ceo from "../components/sections/ceo.astro";
-import CeoMobile from "../components/sections/mobile/ceo.astro";
-
-import Equity from "../components/sections/equity.astro";
-import Playground from "../components/sections/playground.astro";
-import PlaygroundMobile from "../components/sections/mobile/playground.astro";
-
-import Scoreboard from "../components/sections/scoreboard.astro";
-import ScoreboardMobile from "../components/sections/mobile/scoreboard.astro";
-
-import Think from "../components/sections/think.astro";
-import ThinkMobile from "../components/sections/mobile/think.astro";
-import Worldwide from "../components/sections/worldwide.astro";
-import WorldwideMobile from "../components/sections/mobile/worldwide.astro";
-
-import Footer from "../components/ui/footer.astro";
+import DesktopUniverse from "../components/sections/universe-desktop.astro";
+import MobileUniverse from "../components/sections/mobile/universe-mobile.astro";
 import Cursor from "../components/ui/cursor.astro";
-import FooterMobile from "../components/ui/footer-mobile.astro";
-import { Particles } from "../components/ui/particles";
+import "../styles/global.css";
 ---
 
-<html lang="en" class="overflow-x-hidden">
+<html lang="en" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="ThinkerCare Group is a creative & production collective based in Algiers that transforms ideas into brands and products. Core capabilities include brand strategy, product design & prototyping, creative production, and small-to-medium scale manufacturing."
+      content="ThinkerCare Group is a creative and production collective based in Algiers that transforms ideas into brands and products."
     />
-    <meta name="generator" content="Astro" />
+    <meta property="og:title" content="THINKERCARE GROUP" />
+    <meta
+      property="og:description"
+      content="When thinkers become makers. We design, build, and scale bold brands across care, wellness, food, sport, and technology."
+    />
     <title>THINKERCARE GROUP | when thinkers become makers</title>
   </head>
-  <body class="space-y-4">
+  <body class="bg-background-secondary text-foreground antialiased">
     <Cursor />
-    <main class="relative overflow-hidden bg-background">
-      <div class="pointer-events-none absolute inset-0 z-0">
-        <Particles
-          client:load
-          className="absolute inset-0 opacity-100 mix-blend-multiply"
-          quantity={480}
-          ease={80}
-          color="#000000"
-          refresh
-        />
-      </div>
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-primary focus:px-4 focus:py-3 focus:text-black"
+    >
+      Skip to content
+    </a>
 
-      <div class="relative z-10 space-y-4">
-        <Header />
-
-        <div class="hidden sm:block">
-          <Think />
-        </div>
-        <div class="block sm:hidden">
-          <ThinkMobile />
-        </div>
-
-        <div class="hidden sm:block">
-          <Playground />
-        </div>
-        <div class="block sm:hidden">
-          <PlaygroundMobile />
-        </div>
-
-        <div class="hidden sm:block">
-          <Worldwide />
-        </div>
-        <div class="block sm:hidden">
-          <WorldwideMobile />
-        </div>
-
-        <div class="hidden sm:block">
-          <Scoreboard />
-        </div>
-        <div class="block sm:hidden">
-          <ScoreboardMobile />
-        </div>
-
-        <Brands />
-        <Equity />
-
-        <div class="hidden sm:block">
-          <Ceo />
-        </div>
-        <div class="block sm:hidden">
-          <CeoMobile />
-        </div>
-      </div>
-    </main>
-
-    <div class="hidden sm:block">
-      <Footer />
+    <div id="content">
+      <DesktopUniverse />
+      <MobileUniverse />
     </div>
-    <div class="block sm:hidden">
-      <FooterMobile />
-    </div>
+
+    <script is:inline>
+      (() => {
+        const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        document.querySelectorAll("[data-ticker]").forEach((ticker) => {
+          const button = ticker.querySelector("[data-ticker-toggle]");
+          if (!button) return;
+
+          if (reduceMotion) {
+            ticker.classList.add("is-paused");
+            button.textContent = "Play";
+            button.setAttribute("aria-label", "Play ticker");
+          }
+
+          button.addEventListener("click", () => {
+            const paused = ticker.classList.toggle("is-paused");
+            button.textContent = paused ? "Play" : "Pause";
+            button.setAttribute("aria-label", paused ? "Play ticker" : "Pause ticker");
+          });
+        });
+
+        const revealItems = Array.from(
+          document.querySelectorAll(
+            "main section > *, footer > *, .metric-card, .pass-card, .session-row, .logo-cell, .brand-tile, .form-row, .highlight-detail, .tc-wordmark-row, .ticker"
+          )
+        );
+
+        revealItems.forEach((item) => {
+          if (!(item instanceof HTMLElement) || item.classList.contains("reveal")) return;
+          const index = Array.from(item.parentElement?.children || []).indexOf(item);
+          item.classList.add("reveal");
+          item.style.setProperty("--reveal-delay", `${Math.max(0, index % 6) * 90}ms`);
+        });
+
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          revealItems.forEach((item) => item.classList.add("is-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        revealItems.forEach((item) => observer.observe(item));
+      })();
+    </script>
   </body>
 </html>

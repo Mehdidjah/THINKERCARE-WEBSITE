@@ -1,0 +1,441 @@
+---
+import PlaceholderSlot from "../ui/placeholder-slot.astro";
+import { SplineScene } from "../ui/splite";
+import { agenda, brands, heroWordmark, highlights, included, marquee, metrics, partners } from "./universe-data";
+
+const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
+---
+
+<div class="hidden lg:block">
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#main" class="site-logo-link" aria-label="ThinkerCare Group home">
+        <img src="/assets/logo.svg" alt="ThinkerCare Group" />
+      </a>
+      <a href="#brands" class="site-nav-link">Brands</a>
+      <a href="#agenda" class="site-nav-link">Scoreboard</a>
+      <div class="site-nav-spacer" aria-hidden="true"></div>
+      <div class="site-nav-actions">
+        <a href="#contact" class="site-nav-secondary">Contact</a>
+        <a href="#contact" class="site-nav-cta">
+          Get in touch <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="mx-auto max-w-[1600px] border-x border-grid bg-background-secondary">
+    <section class="border-b border-grid">
+      <div class="tc-wordmark-row px-12 py-16">
+        <h1 class="tc-wordmark hero-wordmark" aria-label="thinkercare,group">
+          <span class="hero-wordmark-text" aria-hidden="true">
+            {heroWordmark.thinkerCare.map((letter, index) => (
+              <span class="hero-wordmark-letter" style={`--letter-delay: ${240 + index * 75}ms`}>{letter}</span>
+            ))}
+            <span class="hero-comma-wrap">
+              <span class="hero-wordmark-comma" style="--group-delay: 1280ms">,</span>
+              {heroWordmark.pixelColors.map((color, index) => (
+                <span class={`hero-wordmark-pixel hero-wordmark-pixel-${index + 1}`} style={`--pixel-delay: ${1360 + index * 90}ms; --c: ${color}`}></span>
+              ))}
+              <svg class="hero-wordmark-arc" viewBox="0 0 40 40" aria-hidden="true">
+                <path pathLength="1" d="M 9 8 C 29 6 34 19 24 31" />
+              </svg>
+            </span>
+            <span class="hero-wordmark-group">
+              {heroWordmark.group.map((letter, index) => (
+                <span class="hero-wordmark-group-letter" style={`--group-delay: ${1355 + index * 75}ms`}>{letter}</span>
+              ))}
+            </span>
+          </span>
+          {heroWordmark.scanLinePositions.map((position, index) => (
+            <span class="hero-wordmark-scanline" style={`--x: ${position}; --scan-delay: ${50 + index * 75}ms`}></span>
+          ))}
+        </h1>
+      </div>
+
+      <div class="grid border-t border-grid lg:grid-cols-[1.34fr_1fr]">
+        <div class="hero-video-placeholder min-h-[600px] border-grid lg:border-r" aria-label="Hero video placeholder">
+          <button type="button" aria-label="Pause hero video" class="absolute bottom-6 right-6 z-10 grid size-14 place-items-center rounded-full bg-black/75 font-sans text-xl font-black text-white transition hover:bg-black">
+            ||
+          </button>
+        </div>
+
+        <div class="grid">
+          <div class="grid grid-cols-2 border-b border-grid text-base">
+            <p class="border-r border-grid px-6 py-5 font-mono">
+              algiers / creative-production
+            </p>
+            <p class="px-6 py-5 text-right font-mono">
+              in-market and growing
+            </p>
+          </div>
+          <div class="border-b border-grid px-8 py-7">
+            <p class="max-w-3xl font-sans text-5xl font-semibold leading-[1.04] tracking-[-0.04em]">
+              We transform thoughtful ideas into brands, products, and production systems.
+            </p>
+          </div>
+          <div class="relative min-h-[190px] overflow-hidden border-b border-grid bg-background">
+            <div class="absolute inset-x-0 bottom-0 h-36">
+              <div class="pixel-band pixel-band-hero h-full"></div>
+            </div>
+          </div>
+          <div class="p-6">
+            <a href="#contact" class="big-cta">
+              Get in touch <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker border-b border-grid bg-primary text-black" data-ticker>
+      <button type="button" class="ticker-pause no-trail" aria-label="Pause ticker" data-ticker-toggle>Pause</button>
+      <div class="ticker-track">
+        {[...marquee, ...marquee, ...marquee, ...marquee, ...marquee, ...marquee].map((item) => (
+          <a href="#contact" class="ticker-item">
+            {item} <span aria-hidden="true">↗</span>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <section id="experience" class="grid border-b border-grid lg:grid-cols-[1.25fr_0.95fr]">
+      <div class="border-grid lg:border-r">
+        <div class="min-h-[360px] border-b border-grid p-8">
+          <h2 class="max-w-5xl font-sans text-8xl font-semibold leading-[0.95] tracking-[-0.06em]">
+            ThinkerCare is where care brands become movements
+          </h2>
+        </div>
+        <div class="grid min-h-[360px] lg:grid-cols-2">
+          <div class="flex items-end border-grid p-6 lg:border-r">
+            <p class="font-mono text-lg text-foreground-secondary">dev.experience()</p>
+          </div>
+          <div class="p-6">
+            <p class="max-w-xl font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em]">
+              See how ideas move from brand strategy to product design, production, launch, and scale.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="grid">
+        <div class="min-h-[300px] border-b border-grid p-8">
+          <div class="pixel-band h-full min-h-[230px]"></div>
+        </div>
+        <PlaceholderSlot label="experience-image-slot" variant="green" class="min-h-[430px]" />
+      </div>
+    </section>
+
+    <section class="grid border-b border-grid lg:grid-cols-[1.35fr_1fr]">
+      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="min-h-[620px] border-grid lg:border-r" />
+      <div class="grid">
+        <div class="grid min-h-[270px] grid-cols-2 border-b border-grid">
+          <div class="flex items-end border-r border-grid p-6">
+            <p class="font-mono text-lg text-foreground-secondary">dev.learn()</p>
+          </div>
+          <div class="p-6">
+            <div class="pixel-band pixel-band-warm h-full"></div>
+          </div>
+        </div>
+        <div class="p-8">
+          <p class="max-w-2xl font-sans text-5xl font-semibold leading-[1.04] tracking-[-0.04em]">
+            Build bold, forward-thinking brands rooted in their time.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid border-b border-grid lg:grid-cols-[1fr_1.45fr]">
+      <div class="min-h-[500px] border-grid p-8 lg:border-r">
+        <p class="mb-28 font-mono text-lg">dev.connect()</p>
+        <h2 class="max-w-2xl font-sans text-6xl font-semibold leading-[1.02] tracking-[-0.05em]">
+          Across industries, our portfolio is built to shape the future of care.
+        </h2>
+      </div>
+      <div class="grid grid-cols-2">
+        <div class="brand-tile border-r border-b border-grid">
+          <span>sport and health</span>
+        </div>
+        <div class="brand-tile border-b border-grid">
+          <span>dermo-cosmetics</span>
+        </div>
+        <div class="brand-tile border-r border-grid">
+          <span>tea and wellness</span>
+        </div>
+        <div class="brand-tile">
+          <span>technology</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="stats" class="border-b border-grid">
+      <div class="min-h-[260px] border-b border-grid p-8">
+        <h2 class="font-sans text-8xl font-semibold leading-none tracking-[-0.06em]">
+          scoreboard/
+        </h2>
+      </div>
+      <div class="grid lg:grid-cols-4">
+        {metrics.map((metric) => (
+          <article class="metric-card">
+            <p class="font-sans text-8xl font-black leading-none tracking-[-0.07em] text-primary">
+              {metric.value}
+            </p>
+            <h3 class="mt-8 font-sans text-3xl font-semibold leading-none tracking-[-0.04em]">
+              {metric.label}
+            </h3>
+            <p class="mt-5 max-w-sm text-lg leading-snug text-foreground-secondary">{metric.body}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="border-b border-grid" id="offers">
+      <div class="min-h-[260px] border-b border-grid p-8">
+        <h2 class="font-sans text-8xl font-semibold leading-none tracking-[-0.06em]">
+          choose-your-track/
+        </h2>
+      </div>
+      <div class="grid border-b border-grid md:grid-cols-3">
+        <button type="button" class="tab-cell active">Brand build <span aria-hidden="true">●</span></button>
+        <button type="button" class="tab-cell">Production <span aria-hidden="true">○</span></button>
+        <button type="button" class="tab-cell">Equity partner <span aria-hidden="true">○</span></button>
+      </div>
+      <div class="grid lg:grid-cols-2">
+        <article class="pass-card border-grid lg:border-r">
+          <h3>brand venture/</h3>
+          <p>
+            Join ThinkerCare to design, build, and scale a product with strategy, creative direction, production, and launch support.
+          </p>
+          <div class="pass-price">from idea</div>
+          <a href="#contact" class="big-cta">Get in touch <span aria-hidden="true">↗</span></a>
+          <div class="included">
+            <h4>What&apos;s included</h4>
+            <ul>
+              {included.slice(0, 4).map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </article>
+        <article class="pass-card">
+          <h3>equity partner/</h3>
+          <p>
+            Bring capital, product, distribution, or technology into a group built around trust, vision, and long-term value.
+          </p>
+          <div class="pass-price">long term</div>
+          <a href="#contact" class="ghost-cta">Get in touch <span aria-hidden="true">↗</span></a>
+          <div class="included">
+            <h4>What&apos;s included</h4>
+            <ul>
+              {included.slice(2).map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="agenda" class="agenda-section">
+      <div class="agenda-shell">
+        <div class="agenda-heading">
+          <h2>agenda/</h2>
+        </div>
+        <div class="agenda-list">
+        {agenda.map((group) => (
+          <section class={`agenda-day ${group.accent}`}>
+            <h3 class="agenda-day-label">
+              {group.day}
+            </h3>
+            <div class="agenda-day-items">
+              {group.items.map((item) => (
+                <article class="agenda-item">
+                  <p class="agenda-time">{item.time}</p>
+                  <div>
+                    <h4 class="agenda-title">{item.title}</h4>
+                    <p class="agenda-body">{item.body}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="highlight-section border-b border-grid" id="highlights">
+      <div class="pixel-band h-56 border-b border-grid"></div>
+      <div class="flex min-h-[270px] items-end border-b border-grid px-8 pb-10 pt-16">
+        <h2 class="font-sans text-[clamp(4.5rem,6.4vw,7.2rem)] font-semibold leading-none tracking-[-0.06em]">
+          selected-highlights/
+        </h2>
+      </div>
+      <div class="grid bg-background-secondary lg:grid-cols-[0.95fr_1fr]">
+        <div class="border-grid lg:border-r">
+          {highlights.map((item, index) => (
+            <button type="button" class={`session-row highlight-trigger highlight-trigger-${index}`}>
+              <span class={`session-stripe stripe-${index}`}></span>
+              <span class={`mini-placeholder stripe-${index}`}>
+                {item.video ? (
+                  <video src={item.video} poster={item.poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+                ) : item.poster ? (
+                  <img src={item.poster} alt="" loading="lazy" aria-hidden="true" />
+                ) : null}
+              </span>
+              <span>{item.name}</span>
+            </button>
+          ))}
+          <a href="#brands" class="m-8 flex min-h-24 items-center justify-between border border-grid bg-background px-6 py-6 text-xl font-semibold shadow-inner transition hover:bg-primary hover:text-black">
+            Browse all brand systems <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="highlight-detail p-8">
+          <div class="highlight-media relative aspect-video overflow-hidden bg-black">
+            {highlights.map((item, index) => (
+              <div class={`highlight-media-item highlight-media-item-${index}`}>
+                {item.video ? (
+                  <video class="highlight-video" controls autoplay muted loop playsinline preload="metadata" poster={item.poster}>
+                    <source src={item.video} type={item.type} />
+                  </video>
+                ) : item.poster ? (
+                  <>
+                    <img src={item.poster} alt="" class="highlight-video" loading="lazy" />
+                    <button type="button" aria-label="Play highlight placeholder" class="absolute left-1/2 top-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-5xl text-black backdrop-blur">
+                      ▶
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <PlaceholderSlot label="highlight-video-slot" variant="dark" class="h-full" />
+                    <button type="button" aria-label="Play highlight" class="absolute left-1/2 top-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-5xl text-black backdrop-blur">
+                      ▶
+                    </button>
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+          <div class="mt-8 grid grid-cols-[minmax(0,1fr)_auto] items-start gap-6">
+            <div class="highlight-copy max-w-4xl">
+              {highlights.map((item, index) => (
+                <div class={`highlight-copy-item highlight-copy-item-${index}`}>
+                  <h3 class="font-sans text-5xl font-semibold leading-[1.02] tracking-[-0.05em]">
+                    {item.title}
+                  </h3>
+                  <p class="mt-5 text-xl leading-snug text-foreground-secondary">
+                    {item.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div class="flex gap-2">
+              <button type="button" aria-label="Previous highlight" class="media-nav-button">←</button>
+              <button type="button" class="media-nav-button">Next <span aria-hidden="true">→</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brands" class="border-b border-grid">
+      <div class="min-h-[260px] border-b border-grid p-8">
+        <p class="font-mono text-lg">your-story-starts-here</p>
+      </div>
+      <div class="grid lg:grid-cols-[0.5fr_1fr]">
+        <div class="border-grid p-8 lg:border-r">
+          <div class="mb-10 font-sans text-9xl font-black leading-none text-[#b6ae32]">,,</div>
+          <p class="max-w-lg font-sans text-5xl font-semibold leading-[1.08] tracking-[-0.04em]">
+            We do not see markets. We see playgrounds where bold ideas meet real-world needs.
+          </p>
+        </div>
+        <div class="grid grid-cols-4">
+          {brands.map((brand) => (
+            <a href={brand.href} target="_blank" rel="noreferrer" class="logo-cell">
+              <img src={brand.image} alt={brand.name} />
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="grid border-b border-grid lg:grid-cols-[1fr_1fr]">
+      <div class="border-grid p-8 lg:border-r">
+        <h2 class="font-sans text-7xl font-semibold leading-none tracking-[-0.06em]">
+          equity-partners/
+        </h2>
+        <p class="mt-8 max-w-2xl text-2xl leading-snug text-foreground-secondary">
+          Equity partnerships are built on trust, vision, and long-term value. We bring strategy, experience, and a strong ecosystem.
+        </p>
+      </div>
+      <div class="grid grid-cols-3">
+        {partners.map((partner) => (
+          <a href={partner.href} target="_blank" rel="noreferrer" class="logo-cell min-h-64">
+            <img src={partner.image} alt={partner.name} />
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section class="grid border-b border-grid lg:grid-cols-[1.2fr_0.8fr]">
+      <PlaceholderSlot label="care-story-image-slot" variant="green" class="min-h-[520px] border-grid lg:border-r" />
+      <div class="flex flex-col justify-between p-8">
+        <p class="font-mono text-lg">attendee:</p>
+        <blockquote class="mt-20 font-sans text-5xl font-semibold leading-[1.08] tracking-[-0.04em]">
+          Caring is what we do best.
+        </blockquote>
+        <p class="mt-8 max-w-xl text-xl leading-snug text-foreground-secondary">
+          Our shared vision places humanity at the center, creating brands that are useful, desirable, and responsible.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact" class="grid border-b border-grid lg:grid-cols-[1fr_1fr]">
+      <div class="contact-intro border-grid lg:border-r">
+        <div class="contact-model-shell">
+          <SplineScene client:visible scene={contactSplineScene} className="contact-spline-scene" backgroundColor="#e9edec" />
+        </div>
+      </div>
+      <form class="grid gap-0 bg-background" action="https://sheetdb.io/api/v1/5ivvxdan051gq" method="post">
+        <label class="form-row">
+          <span>Full name</span>
+          <input type="text" name="data[fullname]" required />
+        </label>
+        <label class="form-row">
+          <span>Email</span>
+          <input type="email" name="data[email]" required />
+        </label>
+        <label class="form-row">
+          <span>Phone</span>
+          <input type="tel" name="data[phone]" inputmode="numeric" required />
+        </label>
+        <label class="form-row">
+          <span>Message</span>
+          <input type="text" name="data[message]" maxlength="200" required />
+        </label>
+        <div class="p-8">
+          <button type="submit" class="big-cta w-full">
+            Send message <span aria-hidden="true">↗</span>
+          </button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="mx-auto max-w-[1600px] overflow-hidden border-x border-b border-grid bg-background-secondary text-foreground">
+    <div class="tc-wordmark-row border-b border-grid px-8 py-12">
+      <h2 class="tc-wordmark tc-wordmark-footer">
+        <span>THINKERCARE</span><span class="tc-wordmark-accent">,</span><span>GROUP</span>
+      </h2>
+    </div>
+    <div class="grid min-h-24 border-b border-grid lg:grid-cols-[1.24fr_0.72fr_0.94fr_0.86fr_0.88fr_0.84fr_minmax(0,1.72fr)]">
+      <p class="footer-cell font-mono text-foreground-secondary">© 2026 THINKERCARE GROUP.</p>
+      <a href="#brands" class="footer-cell">Brands</a>
+      <a href="#agenda" class="footer-cell">Scoreboard</a>
+      <a href="#contact" class="footer-cell">Contact</a>
+      <a href="https://www.instagram.com/thinkercaregroup" target="_blank" rel="noreferrer" class="footer-cell">Instagram</a>
+      <a href="https://www.linkedin.com/company/thinkercare-group/" target="_blank" rel="noreferrer" class="footer-cell">LinkedIn</a>
+      <a href="mailto:contact@thinkercaregroup.com" class="footer-cell footer-cell-contact justify-between gap-4 font-mono">
+        <span>contact@thinkercaregroup.com</span> <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+    <a href="#contact" class="footer-command no-trail">
+      echo "start-a-project" &gt;&gt; thinkercare/group <span aria-hidden="true">↗</span>
+    </a>
+  </footer>
+</div>

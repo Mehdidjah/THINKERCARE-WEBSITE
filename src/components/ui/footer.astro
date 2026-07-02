@@ -2,39 +2,18 @@
 import { Underline } from "./animations/underline";
 import { DotAnimation } from "./animations/dot-animation";
 import { Input } from "./input";
+import { SplineScene } from "./splite";
 import { AiOutlineFacebook, AiOutlineLinkedin } from "react-icons/ai";
 import { FaInstagram } from "react-icons/fa";
+
+const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 ---
 
 <footer class="text-footer-foreground bg-footer-background mb-0">
   <div class="max-w-7xl mx-auto px-12 py-16 space-y-12">
     <div class="flex flex-col items-center md:grid grid-cols-2 gap-12">
-      <div class="space-y-2">
-        <div
-          class="text-8xl font-extrabold font-sans scale-y-120 relative w-fit"
-        >
-          LET&apos;S
-          <div
-            class="absolute text-2xl text-primary -bottom-0.5 left-8 font-light font-mono whitespace-nowrap tracking-widest"
-          >
-            FEEL FREE TO
-          </div>
-        </div>
-        <div
-          class="text-8xl font-extrabold font-sans scale-y-120 relative w-fit"
-        >
-          GET IN
-          <div
-            class="absolute text-2xl text-primary -bottom-0.5 right-4 font-light font-mono whitespace-nowrap tracking-widest"
-          >
-            REACH US
-          </div>
-        </div>
-        <div
-          class="text-8xl font-extrabold font-sans scale-y-120 relative w-fit"
-        >
-          TOUCH
-        </div>
+      <div class="contact-model-shell">
+        <SplineScene client:visible scene={contactSplineScene} className="contact-spline-scene" backgroundColor="#f3f3f3" />
       </div>
 
       <form
