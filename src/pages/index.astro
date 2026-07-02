@@ -38,6 +38,207 @@ import "../styles/global.css";
     <script is:inline>
       (() => {
         const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        const commaWraps = Array.from(document.querySelectorAll(".hero-comma-wrap"));
+
+        const layoutCommaMarks = () => {
+          commaWraps.forEach((wrap) => {
+            if (!(wrap instanceof HTMLElement)) return;
+            const text = wrap.closest(".hero-wordmark-text");
+            const wordmark = wrap.closest(".hero-wordmark");
+            const measuredWidth =
+              text?.getBoundingClientRect().width ||
+              wordmark?.getBoundingClientRect().width ||
+              window.innerWidth;
+            const maxCell = window.innerWidth <= 640 ? 14 : window.innerWidth <= 1011 ? 18 : 24;
+            const rawCell = measuredWidth * 0.017;
+            const evenCell = Math.max(8, Math.min(maxCell, 2 * Math.floor(rawCell / 2)));
+            wrap.style.setProperty("--mark-cell", `${evenCell}px`);
+          });
+        };
+
+        const showElement = (element) => {
+          if (element instanceof HTMLElement || element instanceof SVGElement) {
+            element.style.visibility = "visible";
+          }
+        };
+
+        const setArcMaskAngle = (arc, angle) => {
+          arc.style.setProperty("--arc-end", `${angle}deg`);
+        };
+
+        const setFinalCommaMark = (wrap) => {
+          const rect1 = wrap.querySelector(".hero-comma-rect-1");
+          const rect2 = wrap.querySelector(".hero-comma-rect-2");
+          const rect3 = wrap.querySelector(".hero-comma-rect-3");
+          const rect4 = wrap.querySelector(".hero-comma-rect-4");
+          const rect5 = wrap.querySelector(".hero-comma-rect-5");
+          const arc = wrap.querySelector(".hero-comma-arc");
+
+          [
+            [rect1, "translate(0%, 0%)", "#08872b", "1"],
+            [rect2, "translate(100%, 0%)", "#08872b", "1"],
+            [rect3, "translate(0%, 100%)", "#6a40ff", "1"],
+            [rect4, "translate(0%, 100%)", "#08872b", "1"],
+            [rect5, "translate(0%, 0%)", "#01b000", "1"],
+          ].forEach(([element, transform, background, opacity]) => {
+            if (!(element instanceof HTMLElement)) return;
+            element.style.visibility = "visible";
+            element.style.transform = transform;
+            element.style.background = background;
+            element.style.opacity = opacity;
+          });
+
+          if (arc instanceof SVGElement) {
+            arc.style.visibility = "visible";
+            setArcMaskAngle(arc, 180);
+          }
+        };
+
+        const animateArcMask = (arc, duration) => {
+          const start = performance.now();
+          const tick = (now) => {
+            const progress = Math.min(1, (now - start) / duration);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            setArcMaskAngle(arc, 90 + eased * 90);
+            if (progress < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        };
+
+        const runCommaTimeline = (wrap) => {
+          if (!(wrap instanceof HTMLElement)) return;
+          const greenline = wrap.querySelector(".hero-comma-greenline");
+          const rect1 = wrap.querySelector(".hero-comma-rect-1");
+          const rect2 = wrap.querySelector(".hero-comma-rect-2");
+          const rect3 = wrap.querySelector(".hero-comma-rect-3");
+          const rect4 = wrap.querySelector(".hero-comma-rect-4");
+          const rect5 = wrap.querySelector(".hero-comma-rect-5");
+          const arc = wrap.querySelector(".hero-comma-arc");
+          const canAnimate = "animate" in Element.prototype;
+
+          if (!canAnimate) {
+            setFinalCommaMark(wrap);
+            return;
+          }
+
+          const startDelay = 1120;
+          const expoOut = "cubic-bezier(.16, 1, .3, 1)";
+          const elasticOut = "cubic-bezier(.2, 1.65, .35, 1)";
+          const at = (seconds, callback) => window.setTimeout(callback, startDelay + seconds * 1000);
+
+          if (greenline instanceof HTMLElement) {
+            greenline.style.transform = "scaleY(8)";
+            at(0, () => showElement(greenline));
+            at(0.2, () => {
+              greenline.animate(
+                [{ transform: "scaleY(8)" }, { transform: "scaleY(1)" }],
+                { duration: 300, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(0.7, () => {
+              greenline.style.visibility = "hidden";
+            });
+          }
+
+          if (rect1 instanceof HTMLElement) {
+            rect1.style.transform = "translate(0%, 500%)";
+            at(0.4, () => {
+              showElement(rect1);
+              rect1.animate(
+                [{ transform: "translate(0%, 500%)" }, { transform: "translate(0%, 0%)" }],
+                { duration: 300, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(0.9, () => { rect1.style.background = "#02cb28"; });
+            at(1.7, () => { rect1.style.background = "#fd7200"; });
+            at(1.9, () => { rect1.style.background = "#00f384"; });
+            at(2.1, () => { rect1.style.background = "#08872b"; });
+          }
+
+          if (rect2 instanceof HTMLElement) {
+            rect2.style.transform = "translate(100%, 500%)";
+            at(0.5, () => {
+              showElement(rect2);
+              rect2.animate(
+                [{ transform: "translate(100%, 500%)" }, { transform: "translate(100%, 300%)" }],
+                { duration: 300, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(0.8, () => { rect2.style.opacity = "0"; });
+            at(2.0, () => {
+              rect2.style.opacity = "1";
+              rect2.animate(
+                [{ transform: "translate(100%, 300%)" }, { transform: "translate(100%, 0%)" }],
+                { duration: 500, easing: elasticOut, fill: "forwards" }
+              );
+            });
+            at(2.2, () => { rect2.style.background = "#08872b"; });
+          }
+
+          if (rect3 instanceof HTMLElement) {
+            rect3.style.transform = "translate(0%, 500%)";
+            at(0.5, () => {
+              rect3.animate(
+                [{ transform: "translate(0%, 500%)" }, { transform: "translate(0%, 100%)" }],
+                { duration: 200, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(0.6, () => showElement(rect3));
+            at(0.8, () => { rect3.style.background = "#6a40ff"; });
+          }
+
+          if (rect4 instanceof HTMLElement) {
+            rect4.style.transform = "translate(100%, 500%)";
+            at(0.6, () => {
+              showElement(rect4);
+              rect4.animate(
+                [
+                  { transform: "translate(100%, 500%)", offset: 0 },
+                  { transform: "translate(100%, 300%)", offset: 0.33 },
+                  { transform: "translate(0%, 300%)", offset: 0.66 },
+                  { transform: "translate(0%, 100%)", offset: 1 },
+                ],
+                { duration: 600, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(1.3, () => { rect4.style.background = "#00f384"; });
+            at(1.8, () => { rect4.style.background = "#08872b"; });
+          }
+
+          if (rect5 instanceof HTMLElement) {
+            rect5.style.transform = "translate(0%, 500%)";
+            at(1.15, () => {
+              showElement(rect5);
+              rect5.animate(
+                [
+                  { transform: "translate(0%, 500%)", offset: 0 },
+                  { transform: "translate(0%, 300%)", offset: 0.25 },
+                  { transform: "translate(100%, 300%)", offset: 0.5 },
+                  { transform: "translate(0%, 300%)", offset: 0.75 },
+                  { transform: "translate(0%, 0%)", offset: 1 },
+                ],
+                { duration: 800, easing: expoOut, fill: "forwards" }
+              );
+            });
+            at(1.35, () => { rect5.style.background = "#6a40ff"; });
+            at(1.55, () => { rect5.style.background = "#01b000"; });
+          }
+
+          if (arc instanceof SVGElement) {
+            setArcMaskAngle(arc, 90);
+            at(1.7, () => {
+              showElement(arc);
+              animateArcMask(arc, 1000);
+            });
+          }
+        };
+
+        layoutCommaMarks();
+        window.addEventListener("resize", layoutCommaMarks, { passive: true });
+
+        if (!reduceMotion) {
+          commaWraps.forEach(runCommaTimeline);
+        }
 
         document.querySelectorAll("[data-ticker]").forEach((ticker) => {
           const button = ticker.querySelector("[data-ticker-toggle]");
