@@ -100,15 +100,6 @@ export const highlights = [
   },
 ];
 
-export const included = [
-  "Brand strategy and product positioning",
-  "Product design, prototyping, and creative production",
-  "Small-to-medium scale manufacturing support",
-  "Logistics, marketing, distribution, and retail readiness",
-  "Equity partnerships built on trust and long-term value",
-  "A network across beauty, wellness, food, sport, and technology",
-];
-
 export const marquee = [
   "When thinkers become makers",
   "We design, build, and scale",

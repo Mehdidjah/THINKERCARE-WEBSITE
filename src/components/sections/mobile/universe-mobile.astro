@@ -1,7 +1,7 @@
 ---
 import PlaceholderSlot from "../../ui/placeholder-slot.astro";
 import { SplineScene } from "../../ui/splite";
-import { agenda, brands, heroWordmark, highlights, included, marquee, metrics, partners } from "../universe-data";
+import { agenda, brands, heroWordmark, highlights, marquee, metrics, partners } from "../universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 ---
@@ -162,39 +162,58 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
       </div>
     </section>
 
-    <section class="border-b border-grid">
-      <div class="border-b border-grid px-5 py-8">
-        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
-          choose-your-track/
-        </h2>
-      </div>
-      <div class="grid grid-cols-3 border-b border-grid">
-        <button type="button" class="tab-cell active">Brand</button>
-        <button type="button" class="tab-cell">Build</button>
-        <button type="button" class="tab-cell">Equity</button>
-      </div>
-      <article class="pass-card">
-        <h3>brand venture/</h3>
-        <p>
-          Join ThinkerCare to design, build, and scale a product with strategy, creative direction, production, and launch support.
-        </p>
-        <div class="pass-price">from idea</div>
-        <a href="#contact-mobile" class="big-cta">Get in touch <span aria-hidden="true">↗</span></a>
-        <div class="included">
-          <h4>What&apos;s included</h4>
-          <ul>
-            {included.slice(0, 4).map((item) => <li>{item}</li>)}
-          </ul>
+    <section id="tracks-mobile" class="tc-river-section">
+      <div class="tc-river-intro">
+        <div class="tc-river-intro-cell">
+          <h2>Choose the path that moves care ideas into market</h2>
         </div>
-      </article>
-      <article class="pass-card border-t border-grid">
-        <h3>equity partner/</h3>
-        <p>
-          Bring capital, product, distribution, or technology into a group built around trust, vision, and long-term value.
-        </p>
-        <div class="pass-price">long term</div>
-        <a href="#contact-mobile" class="ghost-cta">Get in touch <span aria-hidden="true">↗</span></a>
-      </article>
+        <div class="tc-river-intro-cell tc-river-intro-blank" aria-hidden="true"></div>
+      </div>
+
+      <div class="tc-river-row">
+        <div class="tc-river-content">
+          <h3>brand.build()</h3>
+          <p>
+            Join ThinkerCare to design, build, and scale a product with strategy, creative direction, production, and launch support.
+          </p>
+          <a class="btn btn-secondary" href="#contact-mobile">
+            Get in touch <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <div class="tc-river-visual">
+          <img src="/assets/people.png" alt="Blurred creative team silhouettes in motion" loading="lazy" />
+        </div>
+      </div>
+
+      <div class="tc-river-row tc-river-row-reverse">
+        <div class="tc-river-content">
+          <h3>production.scale()</h3>
+          <p>
+            Move from prototype to small and medium-scale production with systems for quality, logistics, launch, and market readiness.
+          </p>
+        </div>
+        <div class="tc-river-visual tc-river-carousel-visual">
+          <img src="/video/posters/site-belnco-sound.png" alt="Laboratory production table with botanical ingredients" loading="lazy" />
+          <div class="tc-river-caption">.production-floor/<span>▌</span></div>
+          <div class="tc-river-arrows">
+            <button type="button" aria-label="Previous production image">←</button>
+            <button type="button" aria-label="Next production image">→</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tc-river-row">
+        <div class="tc-river-content">
+          <h3>partner.equity()</h3>
+          <p>
+            Bring capital, distribution, product, or technology into a group built around trust, vision, and long-term value.
+          </p>
+        </div>
+        <div class="tc-river-visual tc-river-pixel-visual">
+          <div class="tc-river-pixel-band" aria-hidden="true"></div>
+          <img src="/assets/crowd.png" alt="People moving through a business floor" loading="lazy" />
+        </div>
+      </div>
     </section>
 
     <section id="agenda-mobile" class="agenda-section">
