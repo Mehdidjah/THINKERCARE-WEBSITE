@@ -1,6 +1,7 @@
 "use client"
 
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
+import type { RefObject } from "react"
 import { useEffect, useMemo, useRef, useState } from "react"
 import * as THREE from "three"
 
@@ -217,6 +218,35 @@ function useWireColor() {
   return lineColor
 }
 
+function useElementInView(ref: RefObject<HTMLElement | null>) {
+  const [isInView, setIsInView] = useState(false)
+
+  useEffect(() => {
+    const element = ref.current
+    if (!element) return
+
+    if (!("IntersectionObserver" in window)) {
+      setIsInView(true)
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(Boolean(entry?.isIntersecting))
+      },
+      {
+        threshold: 0.22,
+        rootMargin: "0px 0px -12% 0px",
+      },
+    )
+
+    observer.observe(element)
+    return () => observer.disconnect()
+  }, [ref])
+
+  return isInView
+}
+
 function CameraAim() {
   const { camera } = useThree()
 
@@ -227,7 +257,7 @@ function CameraAim() {
   return null
 }
 
-function WireModelLines({ variant }: { variant: WireModelVariant }) {
+function WireModelLines({ isActive, variant }: { isActive: boolean; variant: WireModelVariant }) {
   const group = useRef<THREE.Group>(null)
   const progress = useRef(0)
   const reducedMotion = usePrefersReducedMotion()
@@ -250,7 +280,7 @@ function WireModelLines({ variant }: { variant: WireModelVariant }) {
 
   useFrame((_, delta) => {
     const current = group.current
-    if (!current || reducedMotion) return
+    if (!current || reducedMotion || !isActive) return
 
     progress.current = Math.min(1, progress.current + delta / 2)
 
@@ -285,22 +315,25 @@ function WireModelLines({ variant }: { variant: WireModelVariant }) {
 }
 
 export default function WireModel({ variant, className = "" }: WireModelProps) {
+  const rootRef = useRef<HTMLDivElement>(null)
   const [mounted, setMounted] = useState(false)
+  const isInView = useElementInView(rootRef)
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   return (
-    <div className={`wire-model-canvas ${className}`} aria-hidden="true">
+    <div ref={rootRef} className={`wire-model-canvas ${className}`} aria-hidden="true">
       {mounted ? (
         <Canvas
           gl={{ alpha: true, antialias: true }}
           camera={{ position: [2.4, 1.7, 3.8], fov: 42 }}
           dpr={[1, 1.6]}
+          frameloop={isInView ? "always" : "demand"}
         >
           <CameraAim />
-          <WireModelLines variant={variant} />
+          <WireModelLines isActive={isInView} variant={variant} />
         </Canvas>
       ) : null}
     </div>

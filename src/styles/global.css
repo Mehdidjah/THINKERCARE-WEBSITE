@@ -917,37 +917,7 @@
   }
 
   .hero-video-placeholder {
-    @apply relative overflow-hidden bg-[#c7edff];
-    background-image:
-      linear-gradient(to right, rgb(134 183 211 / 0.35) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(134 183 211 / 0.35) 1px, transparent 1px),
-      radial-gradient(circle at 52% 32%, rgb(255 255 255 / 0.72), transparent 24%),
-      linear-gradient(180deg, #dff7ff 0%, #b9e6ff 100%);
-    background-size: 92px 92px, 92px 92px, 100% 100%, 100% 100%;
-  }
-
-  .hero-video-placeholder::before,
-  .hero-video-placeholder::after {
-    content: "";
-    position: absolute;
-    pointer-events: none;
-  }
-
-  .hero-video-placeholder::before {
-    inset: 0;
-    background:
-      linear-gradient(90deg, transparent 0 15%, rgb(8 135 43 / 0.9) 15% 21%, transparent 21% 39%, rgb(67 144 235 / 0.4) 39% 54%, transparent 54% 100%),
-      linear-gradient(0deg, transparent 0 72%, rgb(255 255 255 / 0.34) 72% 100%);
-    mix-blend-mode: multiply;
-  }
-
-  .hero-video-placeholder::after {
-    right: 0;
-    bottom: 0;
-    width: min(42%, 24rem);
-    aspect-ratio: 1;
-    background: #5fed83;
-    clip-path: polygon(34% 0, 100% 0, 100% 100%, 0 100%, 0 36%);
+    @apply relative overflow-hidden bg-background-secondary;
   }
 
   .contact-intro {
