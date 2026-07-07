@@ -5,6 +5,11 @@ import AgendaSection from "./agenda-section.astro";
 import { brands, heroWordmark, highlights, marquee, metrics, partners } from "./universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
+const heroPixelRows = [
+  ["mustard", "mustard", "green", "mustard", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "mustard"],
+  ["mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard"],
+  ["green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard", "mustard", "green", "mustard"],
+];
 ---
 
 <div class="hidden md:block">
@@ -88,8 +93,14 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
             </p>
           </div>
           <div class="relative min-h-[190px] overflow-hidden border-b border-grid bg-background">
-            <div class="absolute inset-x-0 bottom-0 h-36">
-              <div class="pixel-band pixel-band-hero h-full"></div>
+            <div class="absolute inset-0">
+              <div class="pixel-band-hero h-full" aria-hidden="true">
+                {heroPixelRows.map((row) => (
+                  <div class="hero-pixel-row">
+                    {row.map((tile) => <span class={`hero-pixel-tile is-${tile}`}></span>)}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <div class="p-6">

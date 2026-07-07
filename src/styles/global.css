@@ -1316,9 +1316,34 @@
   }
 
   .pixel-band-hero {
-    background-image:
-      linear-gradient(90deg, var(--site-green) 0 28%, #bba00a 28% 42%, #4c91e8 42% 58%, var(--site-green) 58% 68%, #d86bd7 68% 76%, var(--site-green) 76% 100%),
-      linear-gradient(0deg, transparent 0 50%, #86e889 50% 100%);
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    overflow: hidden;
+    background: #bba00a;
+  }
+
+  .hero-pixel-row {
+    display: flex;
+    height: calc(100% / 3);
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .hero-pixel-tile {
+    display: block;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    flex: 0 0 auto;
+    background: #bba00a;
+  }
+
+  .hero-pixel-tile.is-green {
+    background: #16bf43;
+  }
+
+  .hero-pixel-tile.is-mustard {
+    background: #bba00a;
   }
 
   .pixel-band-warm {
