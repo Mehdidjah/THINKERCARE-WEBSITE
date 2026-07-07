@@ -163,6 +163,27 @@
     vertical-align: baseline;
   }
 
+  .hero-meta-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    white-space: nowrap;
+  }
+
+  main p.hero-meta-cell.font-mono::after {
+    content: none;
+    display: none;
+  }
+
+  .hero-meta-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    flex: 0 0 10px;
+    background: var(--site-green);
+    animation: blink 1s steps(1) infinite;
+  }
+
   .btn {
     @apply flex items-end justify-between gap-4 rounded-md px-4 pb-4 pt-10 font-sans text-base font-medium transition;
     min-height: 78px;
