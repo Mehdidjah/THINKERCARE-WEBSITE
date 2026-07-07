@@ -1,6 +1,6 @@
 ---
-import PlaceholderSlot from "../ui/placeholder-slot.astro";
 import { SplineScene } from "../ui/splite";
+import WireModel from "../ui/wire-model";
 import { agenda, brands, heroWordmark, highlights, marquee, metrics, partners } from "./universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
@@ -128,12 +128,16 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
         <div class="min-h-[300px] border-b border-grid p-8">
           <div class="pixel-band h-full min-h-[230px]"></div>
         </div>
-        <PlaceholderSlot label="experience-image-slot" variant="green" class="min-h-[430px]" />
+        <div class="wire-model-panel min-h-[430px]">
+          <WireModel client:visible variant="armillary" />
+        </div>
       </div>
     </section>
 
     <section class="grid border-b border-grid lg:grid-cols-[1.35fr_1fr]">
-      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="min-h-[620px] border-grid lg:border-r" />
+      <div class="wire-model-panel min-h-[620px] border-grid lg:border-r">
+        <WireModel client:visible variant="turbine" />
+      </div>
       <div class="grid">
         <div class="grid min-h-[270px] grid-cols-2 border-b border-grid">
           <div class="flex items-end border-r border-grid p-6">
@@ -320,7 +324,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
                   </>
                 ) : (
                   <>
-                    <PlaceholderSlot label="highlight-video-slot" variant="dark" class="h-full" />
+                    <div class="wire-model-panel h-full">
+                      <WireModel client:visible variant="leadscrew" />
+                    </div>
                     <button type="button" aria-label="Play highlight" class="absolute left-1/2 top-1/2 grid size-24 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-5xl text-black backdrop-blur">
                       ▶
                     </button>
@@ -391,7 +397,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section class="grid border-b border-grid lg:grid-cols-[1.2fr_0.8fr]">
-      <PlaceholderSlot label="care-story-image-slot" variant="green" class="min-h-[520px] border-grid lg:border-r" />
+      <div class="wire-model-panel min-h-[520px] border-grid lg:border-r">
+        <WireModel client:visible variant="planetary" />
+      </div>
       <div class="flex flex-col justify-between p-8">
         <p class="font-mono text-lg">attendee:</p>
         <blockquote class="mt-20 font-sans text-5xl font-semibold leading-[1.08] tracking-[-0.04em]">

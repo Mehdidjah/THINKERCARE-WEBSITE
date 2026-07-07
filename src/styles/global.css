@@ -18,6 +18,9 @@
   --site-spacing: 24px;
   --site-max-width: 1600px;
   --site-focus: #096bde;
+  --wire-model-line: #050505;
+  --wire-model-dot: rgb(0 0 0 / 0.24);
+  --wire-model-bg: #f2f5f3;
 }
 
 @font-face {
@@ -1041,6 +1044,52 @@
     background:
       linear-gradient(90deg, transparent 0 22%, rgb(8 135 43 / 0.9) 22% 28%, transparent 28% 52%, rgb(81 56 255 / 0.55) 52% 64%, transparent 64% 100%),
       radial-gradient(circle at 58% 48%, rgb(255 255 255 / 0.2), transparent 18%);
+  }
+
+  .wire-model-panel {
+    position: relative;
+    width: 100%;
+    min-height: 320px;
+    overflow: hidden;
+    background-color: var(--wire-model-bg);
+    color: var(--wire-model-line);
+    background-image: radial-gradient(var(--wire-model-dot) 1px, transparent 1.5px);
+    background-size: 18px 18px;
+  }
+
+  .wire-model-canvas,
+  .wire-model-canvas astro-island,
+  .wire-model-canvas astro-island > div {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .wire-model-panel canvas {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .wire-model-panel::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 50% 45%, rgb(0 0 0 / 0.04), transparent 35%),
+      linear-gradient(180deg, rgb(255 255 255 / 0.18), transparent 42%, rgb(0 0 0 / 0.04));
+  }
+
+  .mobile-visual-slot.wire-model-panel {
+    min-height: 310px;
+  }
+
+  .highlight-media .wire-model-panel {
+    height: 100%;
+    min-height: 100%;
   }
 
   .mini-placeholder {

@@ -1,6 +1,6 @@
 ---
-import PlaceholderSlot from "../../ui/placeholder-slot.astro";
 import { SplineScene } from "../../ui/splite";
+import WireModel from "../../ui/wire-model";
 import { agenda, brands, heroWordmark, highlights, marquee, metrics, partners } from "../universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
@@ -102,7 +102,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
           ThinkerCare is where care brands become movements
         </h2>
       </div>
-      <PlaceholderSlot label="experience-image-slot" variant="green" class="mobile-visual-slot min-h-[300px] border-b border-grid" />
+      <div class="mobile-visual-slot wire-model-panel min-h-[300px] border-b border-grid">
+        <WireModel client:visible variant="armillary" />
+      </div>
       <div class="px-5 py-7">
         <p class="font-mono text-base text-foreground-secondary">dev.experience()</p>
         <p class="mt-6 font-sans text-[2.4rem] font-medium leading-[1.06] tracking-[-0.04em]">
@@ -112,7 +114,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section class="border-b border-grid">
-      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="mobile-visual-slot min-h-[310px] border-b border-grid" />
+      <div class="mobile-visual-slot wire-model-panel min-h-[310px] border-b border-grid">
+        <WireModel client:visible variant="turbine" />
+      </div>
       <div class="border-b border-grid p-5">
         <div class="pixel-band pixel-band-warm h-32"></div>
       </div>
@@ -264,7 +268,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
                 </>
               ) : (
                 <>
-                  <PlaceholderSlot label="highlight-video-slot" variant="dark" class="mobile-visual-slot h-full" />
+                  <div class="mobile-visual-slot wire-model-panel h-full">
+                    <WireModel client:visible variant="leadscrew" />
+                  </div>
                   <button type="button" aria-label="Play highlight" class="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-3xl text-black backdrop-blur">
                     ▶
                   </button>
@@ -347,7 +353,9 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section class="border-b border-grid">
-      <PlaceholderSlot label="care-story-image-slot" variant="green" class="mobile-visual-slot min-h-[310px] border-b border-grid" />
+      <div class="mobile-visual-slot wire-model-panel min-h-[310px] border-b border-grid">
+        <WireModel client:visible variant="planetary" />
+      </div>
       <div class="px-5 py-7">
         <p class="font-mono text-base">attendee:</p>
         <blockquote class="mt-12 font-sans text-[2.65rem] font-medium leading-[1.08] tracking-[-0.04em]">
