@@ -257,6 +257,24 @@ import "../styles/global.css";
           });
         });
 
+        const mobileMenu = document.querySelector(".mobile-site-menu");
+        if (mobileMenu instanceof HTMLDetailsElement) {
+          const syncMobileMenuState = () => {
+            const isOpen = mobileMenu.open;
+            document.documentElement.classList.toggle("mobile-menu-open", isOpen);
+            document.body.classList.toggle("mobile-menu-open", isOpen);
+          };
+
+          mobileMenu.addEventListener("toggle", syncMobileMenuState);
+          mobileMenu.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+              mobileMenu.open = false;
+              syncMobileMenuState();
+            });
+          });
+          syncMobileMenuState();
+        }
+
         const revealItems = Array.from(
           document.querySelectorAll(
             "main section > *, footer > *, .metric-card, .session-row, .logo-cell, .brand-tile, .form-row, .highlight-detail, .tc-wordmark-row, .ticker"

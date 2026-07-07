@@ -8,15 +8,13 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
 
 <div class="lg:hidden">
   <header class="mobile-site-header">
-    <div class="mobile-site-logo-row">
-      <a href="#main-mobile" aria-label="ThinkerCare Group home">
-        <img src="/assets/logo.svg" alt="ThinkerCare Group" />
-      </a>
-    </div>
+    <a href="#main-mobile" class="mobile-site-logo-link" aria-label="ThinkerCare Group home">
+      <img src="/assets/logo.svg" alt="ThinkerCare Group" />
+    </a>
     <details class="mobile-site-menu">
       <summary class="mobile-site-summary">
         <span>Menu</span>
-        <span aria-hidden="true">Open</span>
+        <span class="mobile-site-menu-icon" aria-hidden="true"></span>
       </summary>
       <div class="mobile-site-backdrop" aria-hidden="true"></div>
       <nav class="mobile-site-panel" aria-label="Mobile primary">
@@ -33,7 +31,7 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
 
   <main id="main-mobile" class="border-x border-grid bg-background-secondary">
     <section class="border-b border-grid">
-      <div class="tc-wordmark-row px-5 py-8">
+      <div class="tc-wordmark-row mobile-hero-wordmark-row px-4 py-4">
         <h1 class="tc-wordmark hero-wordmark" aria-label="THINKERCARE,GROUP">
           <span class="hero-wordmark-text" aria-hidden="true">
             <span class="hero-wordmark-brand">
@@ -66,21 +64,21 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
           ))}
         </h1>
       </div>
-      <div class="hero-video-placeholder min-h-[390px] border-y border-grid" aria-label="Hero video placeholder">
-        <button type="button" aria-label="Pause hero video" class="absolute bottom-5 right-5 z-10 grid size-12 place-items-center rounded-full bg-black/75 font-sans text-base font-black text-white transition hover:bg-black">
+      <div class="hero-video-placeholder mobile-hero-media min-h-[300px] border-y border-grid" aria-label="Hero video placeholder">
+        <button type="button" aria-label="Pause hero video" class="absolute bottom-4 right-4 z-10 grid size-11 place-items-center rounded-full bg-black/75 font-sans text-sm font-semibold text-white transition hover:bg-black">
           ||
         </button>
       </div>
-      <div class="grid grid-cols-2 border-b border-grid font-mono text-sm">
+      <div class="mobile-hero-meta grid grid-cols-2 border-b border-grid font-mono text-sm">
         <p class="border-r border-grid px-5 py-5">algiers / care economy</p>
         <p class="px-5 py-5 text-right">in-market</p>
       </div>
-      <div class="border-b border-grid px-5 py-7">
-        <p class="font-sans text-4xl font-semibold leading-[1.02] tracking-[-0.05em]">
+      <div class="mobile-hero-copy border-b border-grid px-5 py-5">
+        <p class="font-sans text-[2.7rem] font-medium leading-[1.02] tracking-[-0.045em]">
           We transform thoughtful ideas into brands and products.
         </p>
       </div>
-      <div class="p-5">
+      <div class="mobile-hero-cta px-5 pb-5 pt-4">
         <a href="#contact-mobile" class="big-cta">
           Get in touch <span aria-hidden="true">↗</span>
         </a>
@@ -99,37 +97,37 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </div>
 
     <section class="border-b border-grid">
-      <div class="border-b border-grid px-5 py-8">
-        <h2 class="font-sans text-5xl font-semibold leading-[0.96] tracking-[-0.06em]">
+      <div class="border-b border-grid px-5 py-7">
+        <h2 class="font-sans text-[3.35rem] font-medium leading-[0.98] tracking-[-0.045em]">
           ThinkerCare is where care brands become movements
         </h2>
       </div>
-      <PlaceholderSlot label="experience-image-slot" variant="green" class="min-h-[300px] border-b border-grid" />
-      <div class="px-5 py-8">
+      <PlaceholderSlot label="experience-image-slot" variant="green" class="mobile-visual-slot min-h-[300px] border-b border-grid" />
+      <div class="px-5 py-7">
         <p class="font-mono text-base text-foreground-secondary">dev.experience()</p>
-        <p class="mt-8 font-sans text-3xl font-semibold leading-[1.06] tracking-[-0.04em]">
+        <p class="mt-6 font-sans text-[2.4rem] font-medium leading-[1.06] tracking-[-0.04em]">
           Ideas move from strategy to design, production, launch, and scale.
         </p>
       </div>
     </section>
 
     <section class="border-b border-grid">
-      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="min-h-[330px] border-b border-grid" />
+      <PlaceholderSlot label="build-and-scale-image-slot" variant="warm" class="mobile-visual-slot min-h-[310px] border-b border-grid" />
       <div class="border-b border-grid p-5">
-        <div class="pixel-band pixel-band-warm h-40"></div>
+        <div class="pixel-band pixel-band-warm h-32"></div>
       </div>
-      <div class="px-5 py-8">
+      <div class="px-5 py-7">
         <p class="font-mono text-base text-foreground-secondary">dev.learn()</p>
-        <h2 class="mt-8 font-sans text-4xl font-semibold leading-[1.04] tracking-[-0.04em]">
+        <h2 class="mt-6 font-sans text-[2.65rem] font-medium leading-[1.04] tracking-[-0.04em]">
           Build bold, forward-thinking brands rooted in their time.
         </h2>
       </div>
     </section>
 
     <section class="border-b border-grid">
-      <div class="px-5 py-8">
+      <div class="px-5 py-7">
         <p class="font-mono text-base">dev.connect()</p>
-        <h2 class="mt-20 font-sans text-4xl font-semibold leading-[1.04] tracking-[-0.05em]">
+        <h2 class="mt-12 font-sans text-[2.65rem] font-medium leading-[1.04] tracking-[-0.045em]">
           Across industries, our portfolio is built to shape the future of care.
         </h2>
       </div>
@@ -142,18 +140,18 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section id="stats-mobile" class="border-b border-grid">
-      <div class="border-b border-grid px-5 py-8">
-        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+      <div class="border-b border-grid px-5 py-7">
+        <h2 class="font-sans text-[3.35rem] font-medium leading-none tracking-[-0.045em]">
           scoreboard/
         </h2>
       </div>
       <div>
         {metrics.map((metric) => (
-          <article class="border-b border-grid px-5 py-8 last:border-b-0">
-            <p class="font-sans text-6xl font-black leading-none tracking-[-0.07em] text-primary">
+          <article class="border-b border-grid px-5 py-6 last:border-b-0">
+            <p class="font-sans text-[3.6rem] font-semibold leading-none tracking-[-0.055em] text-primary">
               {metric.value}
             </p>
-            <h3 class="mt-6 font-sans text-3xl font-semibold leading-none tracking-[-0.04em]">
+            <h3 class="mt-5 font-sans text-[2.2rem] font-medium leading-none tracking-[-0.04em]">
               {metric.label}
             </h3>
             <p class="mt-4 text-lg leading-snug text-foreground-secondary">{metric.body}</p>
@@ -243,26 +241,11 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section class="highlight-section border-b border-grid" id="highlights-mobile">
-      <div class="pixel-band h-36 border-b border-grid"></div>
-      <div class="flex min-h-36 items-end border-b border-grid px-5 pb-8 pt-10">
-        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+      <div class="pixel-band h-24 border-b border-grid"></div>
+      <div class="flex min-h-28 items-end border-b border-grid px-5 pb-7 pt-8">
+        <h2 class="font-sans text-[3.25rem] font-medium leading-none tracking-[-0.045em]">
           selected-highlights/
         </h2>
-      </div>
-      <div class="bg-background-secondary">
-        {highlights.map((item, index) => (
-          <button type="button" class={`session-row highlight-trigger highlight-trigger-${index}`}>
-            <span class={`session-stripe stripe-${index}`}></span>
-            <span class={`mini-placeholder stripe-${index}`}>
-              {item.video ? (
-                <video src={item.video} poster={item.poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
-              ) : item.poster ? (
-                <img src={item.poster} alt="" loading="lazy" aria-hidden="true" />
-              ) : null}
-            </span>
-            <span>{item.name}</span>
-          </button>
-        ))}
       </div>
       <div class="highlight-detail p-5">
         <div class="highlight-media relative aspect-video overflow-hidden bg-black">
@@ -281,7 +264,7 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
                 </>
               ) : (
                 <>
-                  <PlaceholderSlot label="highlight-video-slot" variant="dark" class="h-full" />
+                  <PlaceholderSlot label="highlight-video-slot" variant="dark" class="mobile-visual-slot h-full" />
                   <button type="button" aria-label="Play highlight" class="absolute left-1/2 top-1/2 grid size-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-white/70 text-3xl text-black backdrop-blur">
                     ▶
                   </button>
@@ -309,6 +292,21 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
           </div>
         </div>
       </div>
+      <div class="bg-background-secondary">
+        {highlights.map((item, index) => (
+          <button type="button" class={`session-row highlight-trigger highlight-trigger-${index}`}>
+            <span class={`session-stripe stripe-${index}`}></span>
+            <span class={`mini-placeholder stripe-${index}`}>
+              {item.video ? (
+                <video src={item.video} poster={item.poster} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              ) : item.poster ? (
+                <img src={item.poster} alt="" loading="lazy" aria-hidden="true" />
+              ) : null}
+            </span>
+            <span class="session-name">{item.name}</span>
+          </button>
+        ))}
+      </div>
     </section>
 
     <section id="brands-mobile" class="border-b border-grid">
@@ -316,8 +314,8 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
         <p class="font-mono text-base">your-story-starts-here</p>
       </div>
       <div class="border-b border-grid px-5 py-8">
-        <div class="mb-8 font-sans text-8xl font-black leading-none text-[#b6ae32]">,,</div>
-        <p class="font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em]">
+        <div class="mb-6 font-sans text-[4rem] font-semibold leading-none text-[#b6ae32]">,,</div>
+        <p class="font-sans text-[2.65rem] font-medium leading-[1.08] tracking-[-0.04em]">
           We do not see markets. We see playgrounds where bold ideas meet real-world needs.
         </p>
       </div>
@@ -332,7 +330,7 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
 
     <section class="border-b border-grid">
       <div class="border-b border-grid px-5 py-8">
-        <h2 class="font-sans text-5xl font-semibold leading-none tracking-[-0.06em]">
+        <h2 class="font-sans text-[3.25rem] font-medium leading-none tracking-[-0.045em]">
           equity-partners/
         </h2>
         <p class="mt-6 text-xl leading-snug text-foreground-secondary">
@@ -349,10 +347,10 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
     </section>
 
     <section class="border-b border-grid">
-      <PlaceholderSlot label="care-story-image-slot" variant="green" class="min-h-[320px] border-b border-grid" />
-      <div class="px-5 py-8">
+      <PlaceholderSlot label="care-story-image-slot" variant="green" class="mobile-visual-slot min-h-[310px] border-b border-grid" />
+      <div class="px-5 py-7">
         <p class="font-mono text-base">attendee:</p>
-        <blockquote class="mt-16 font-sans text-4xl font-semibold leading-[1.08] tracking-[-0.04em]">
+        <blockquote class="mt-12 font-sans text-[2.65rem] font-medium leading-[1.08] tracking-[-0.04em]">
           Caring is what we do best.
         </blockquote>
         <p class="mt-6 text-lg leading-snug text-foreground-secondary">
