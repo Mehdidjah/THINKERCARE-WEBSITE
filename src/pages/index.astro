@@ -277,15 +277,22 @@ import "../styles/global.css";
 
         const revealItems = Array.from(
           document.querySelectorAll(
-            "main section > *, footer > *, .metric-card, .session-row, .logo-cell, .brand-tile, .form-row, .highlight-detail, .tc-wordmark-row, .ticker"
+            "main section > *, footer > *, .metric-card, .session-row, .logo-cell, .brand-tile, .form-row, .highlight-detail, .tc-wordmark-row, .ticker, .agenda-heading, .agenda-cta-cell, .agenda-day, .agenda-item"
           )
         );
 
         revealItems.forEach((item) => {
           if (!(item instanceof HTMLElement) || item.classList.contains("reveal")) return;
-          const index = Array.from(item.parentElement?.children || []).indexOf(item);
+          const agendaScope = item.closest(".agenda-calendar");
+          const agendaItems = agendaScope
+            ? Array.from(agendaScope.querySelectorAll(".agenda-day, .agenda-item"))
+            : [];
+          const agendaIndex = agendaItems.indexOf(item);
+          const index = agendaIndex >= 0
+            ? agendaIndex
+            : Array.from(item.parentElement?.children || []).indexOf(item);
           item.classList.add("reveal");
-          item.style.setProperty("--reveal-delay", `${Math.max(0, index % 6) * 90}ms`);
+          item.style.setProperty("--reveal-delay", `${Math.max(0, index) * (agendaIndex >= 0 ? 70 : 90)}ms`);
         });
 
         if (reduceMotion || !("IntersectionObserver" in window)) {

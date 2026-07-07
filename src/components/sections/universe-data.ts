@@ -31,28 +31,66 @@ export const metrics = [
 
 export const agenda = [
   {
-    day: "phase0",
-    accent: "border-primary text-primary",
+    day: "phase0_day0",
+    color: "#756405",
+    borderColor: "#b6a132",
     items: [
-      { time: "idea", title: "Think bold", body: "We start with a clear human need and a product story worth building." },
-      { time: "brand", title: "Shape the strategy", body: "Positioning, identity, voice, and a market entry plan get aligned early." },
+      {
+        time: "idea -> strategy",
+        title: "Think bold",
+        body: "We start with a clear human need and a product story worth building.",
+      },
     ],
   },
   {
-    day: "phase1",
-    accent: "border-[#b6ae32] text-[#7d7621]",
+    day: "phase1_day1",
+    color: "#077425",
+    borderColor: "#86ea8d",
     items: [
-      { time: "design", title: "Prototype the experience", body: "Product, packaging, visual systems, and launch assets move together." },
-      { time: "build", title: "Make it real", body: "Production, sourcing, creative content, and operations lock into a working system." },
-      { time: "scale", title: "Launch and grow", body: "Distribution, marketing, retail, and community feedback guide the next cycle." },
+      {
+        time: "brand",
+        title: "Shape the strategy",
+        body: "Positioning, identity, voice, and a market entry plan get aligned early.",
+      },
+      {
+        time: "design",
+        title: "Prototype the experience",
+        body: "Product, packaging, visual systems, and launch assets move together.",
+      },
+      {
+        time: "build",
+        title: "Make it real",
+        body: "Production, sourcing, creative content, and operations lock into a working system.",
+      },
     ],
   },
   {
-    day: "phase2",
-    accent: "border-[#8d7cff] text-[#5138ff]",
+    day: "phase2_day2",
+    color: "#583af7",
+    borderColor: "#5b38ef",
     items: [
-      { time: "equity", title: "Partner for long-term value", body: "We bring strategy, experience, and ecosystem support, not only capital." },
-      { time: "worldwide", title: "Move from zero to worldwide", body: "The goal is useful, desirable, responsible brands that can travel." },
+      {
+        time: "scale",
+        title: "Launch and grow",
+        body: "Distribution, marketing, retail, and community feedback guide the next cycle.",
+      },
+      {
+        time: "equity",
+        title: "Partner for long-term value",
+        body: "We bring strategy, experience, and ecosystem support, not only capital.",
+      },
+    ],
+  },
+  {
+    day: "phase3_day3",
+    color: "#b04b00",
+    borderColor: "#b25a1c",
+    items: [
+      {
+        time: "worldwide",
+        title: "Move from zero to worldwide",
+        body: "The goal is useful, desirable, responsible brands that can travel.",
+      },
     ],
   },
 ];

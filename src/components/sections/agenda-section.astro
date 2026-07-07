@@ -1,0 +1,46 @@
+---
+import { agenda } from "./universe-data";
+
+interface Props {
+  id?: string;
+  contactHref?: string;
+}
+
+const { id = "agenda", contactHref = "#contact" } = Astro.props;
+---
+
+<section id={id} class="tc-agenda agenda-section">
+  <div class="agenda-shell">
+    <div class="agenda-heading">
+      <h2>agenda/</h2>
+    </div>
+
+    <div class="agenda-flex">
+      <div class="agenda-cell agenda-cta-cell">
+        <a href={contactHref} class="agenda-cta-button">
+          Get notified for sessions <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div class="agenda-cell agenda-calendar">
+        {agenda.map((group) => (
+          <article class="agenda-day" style={`--agenda-accent:${group.color}; --agenda-border:${group.borderColor ?? group.color}`}>
+            <h3 class="agenda-day-label">{group.day}</h3>
+
+            <ol class="agenda-items">
+              {group.items.map((item) => (
+                <li class="agenda-item">
+                  <p class="agenda-time">{item.time}</p>
+                  <div class="agenda-copy">
+                    <h4 class="agenda-title">{item.title}</h4>
+                    <p class="agenda-body">{item.body}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,12 +1,13 @@
 ---
 import { SplineScene } from "../ui/splite";
 import WireModel from "../ui/wire-model";
-import { agenda, brands, heroWordmark, highlights, marquee, metrics, partners } from "./universe-data";
+import AgendaSection from "./agenda-section.astro";
+import { brands, heroWordmark, highlights, marquee, metrics, partners } from "./universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 ---
 
-<div class="hidden lg:block">
+<div class="hidden md:block">
   <header class="site-header">
     <nav class="site-nav" aria-label="Primary">
       <a href="#main" class="site-logo-link" aria-label="ThinkerCare Group home">
@@ -60,8 +61,8 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
         </h1>
       </div>
 
-      <div class="grid border-t border-grid lg:grid-cols-[1.34fr_1fr]">
-        <div class="hero-video-placeholder min-h-[600px] border-grid lg:border-r">
+      <div class="grid border-t border-grid md:grid-cols-[1.34fr_1fr]">
+        <div class="hero-video-placeholder min-h-[600px] border-grid md:border-r">
           <img
             src="/assets/hero-corporate-workshop.png"
             alt="ThinkerCare team reviewing product packaging concepts in a bright studio"
@@ -260,33 +261,7 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
       </div>
     </section>
 
-    <section id="agenda" class="agenda-section">
-      <div class="agenda-shell">
-        <div class="agenda-heading">
-          <h2>agenda/</h2>
-        </div>
-        <div class="agenda-list">
-        {agenda.map((group) => (
-          <section class={`agenda-day ${group.accent}`}>
-            <h3 class="agenda-day-label">
-              {group.day}
-            </h3>
-            <div class="agenda-day-items">
-              {group.items.map((item) => (
-                <article class="agenda-item">
-                  <p class="agenda-time">{item.time}</p>
-                  <div>
-                    <h4 class="agenda-title">{item.title}</h4>
-                    <p class="agenda-body">{item.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </section>
-        ))}
-        </div>
-      </div>
-    </section>
+    <AgendaSection id="agenda" contactHref="#contact" />
 
     <section class="highlight-section border-b border-grid" id="highlights">
       <div class="pixel-band h-56 border-b border-grid"></div>

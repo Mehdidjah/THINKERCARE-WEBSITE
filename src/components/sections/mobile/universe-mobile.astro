@@ -1,12 +1,13 @@
 ---
 import { SplineScene } from "../../ui/splite";
 import WireModel from "../../ui/wire-model";
-import { agenda, brands, heroWordmark, highlights, marquee, metrics, partners } from "../universe-data";
+import AgendaSection from "../agenda-section.astro";
+import { brands, heroWordmark, highlights, marquee, metrics, partners } from "../universe-data";
 
 const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode";
 ---
 
-<div class="lg:hidden">
+<div class="md:hidden">
   <header class="mobile-site-header">
     <a href="#main-mobile" class="mobile-site-logo-link" aria-label="ThinkerCare Group home">
       <img src="/assets/logo.svg" alt="ThinkerCare Group" />
@@ -225,31 +226,7 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
       </div>
     </section>
 
-    <section id="agenda-mobile" class="agenda-section">
-      <div class="agenda-shell">
-        <div class="agenda-heading">
-          <h2>agenda/</h2>
-        </div>
-      {agenda.map((group) => (
-        <section class={`agenda-day ${group.accent}`}>
-          <h3 class="agenda-day-label">
-            {group.day}
-          </h3>
-          <div class="agenda-day-items">
-            {group.items.map((item) => (
-              <article class="agenda-item">
-                <p class="agenda-time">{item.time}</p>
-                <div>
-                  <h4 class="agenda-title">{item.title}</h4>
-                  <p class="agenda-body">{item.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      ))}
-      </div>
-    </section>
+    <AgendaSection id="agenda-mobile" contactHref="#contact-mobile" />
 
     <section class="highlight-section border-b border-grid" id="highlights-mobile">
       <div class="pixel-band h-24 border-b border-grid"></div>
