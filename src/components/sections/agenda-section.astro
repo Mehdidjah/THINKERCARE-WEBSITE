@@ -16,12 +16,6 @@ const { id = "agenda", contactHref = "#contact" } = Astro.props;
     </div>
 
     <div class="agenda-flex">
-      <div class="agenda-cell agenda-cta-cell">
-        <a href={contactHref} class="agenda-cta-button">
-          Get notified for sessions <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-
       <div class="agenda-cell agenda-calendar">
         {agenda.map((group) => (
           <article class="agenda-day" style={`--agenda-accent:${group.color}; --agenda-border:${group.borderColor ?? group.color}`}>
