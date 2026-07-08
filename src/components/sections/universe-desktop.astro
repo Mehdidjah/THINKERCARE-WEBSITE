@@ -337,42 +337,47 @@ const heroPixelRows = [
       </div>
     </section>
 
-    <section id="brands" class="border-b border-grid">
-      <div class="min-h-[260px] border-b border-grid p-8">
-        <p class="font-mono text-lg">your-story-starts-here</p>
+    <section id="brands" class="portfolio-section border-b border-grid">
+      <div class="portfolio-header">
+        <p class="portfolio-eyebrow">your-story-starts-here <span aria-hidden="true"></span></p>
+        <h2 class="portfolio-title">brands/</h2>
+        <p class="portfolio-intro">
+          We do not see markets. We see playgrounds where bold ideas meet real-world needs.
+        </p>
       </div>
-      <div class="grid lg:grid-cols-[0.5fr_1fr]">
-        <div class="border-grid p-8 lg:border-r">
-          <div class="mb-10 font-sans text-9xl font-black leading-none text-[#b6ae32]">,,</div>
-          <p class="max-w-lg font-sans text-5xl font-semibold leading-[1.08] tracking-[-0.04em]">
-            We do not see markets. We see playgrounds where bold ideas meet real-world needs.
-          </p>
+
+      <div class="portfolio-group">
+        <div class="portfolio-group-head">
+          <div class="portfolio-group-labels">
+            <p class="portfolio-group-title">our brands/</p>
+            <p class="portfolio-group-note">Brands we build, own, and scale in-house.</p>
+          </div>
+          <span class="portfolio-group-count">{brands.length} active systems</span>
         </div>
-        <div class="grid grid-cols-4">
+        <div class="portfolio-logo-grid portfolio-logo-grid-owned">
           {brands.map((brand) => (
-            <a href={brand.href} target="_blank" rel="noreferrer" class="logo-cell">
+            <a href={brand.href} target="_blank" rel="noreferrer" class="portfolio-logo-cell">
               <img src={brand.image} alt={brand.name} />
             </a>
           ))}
         </div>
       </div>
-    </section>
 
-    <section class="grid border-b border-grid lg:grid-cols-[1fr_1fr]">
-      <div class="border-grid p-8 lg:border-r">
-        <h2 class="font-sans text-7xl font-semibold leading-none tracking-[-0.06em]">
-          equity-partners/
-        </h2>
-        <p class="mt-8 max-w-2xl text-2xl leading-snug text-foreground-secondary">
-          Equity partnerships are built on trust, vision, and long-term value. We bring strategy, experience, and a strong ecosystem.
-        </p>
-      </div>
-      <div class="grid grid-cols-3">
-        {partners.map((partner) => (
-          <a href={partner.href} target="_blank" rel="noreferrer" class="logo-cell min-h-64">
-            <img src={partner.image} alt={partner.name} />
-          </a>
-        ))}
+      <div class="portfolio-group">
+        <div class="portfolio-group-head">
+          <div class="portfolio-group-labels">
+            <p class="portfolio-group-title">equity partner brands/</p>
+            <p class="portfolio-group-note">Long-term partners, separate from the owned portfolio.</p>
+          </div>
+          <span class="portfolio-group-count">{partners.length} partners</span>
+        </div>
+        <div class="portfolio-logo-grid portfolio-partner-grid">
+          {partners.map((partner) => (
+            <a href={partner.href} target="_blank" rel="noreferrer" class="portfolio-logo-cell">
+              <img src={partner.image} alt={partner.name} />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 

@@ -417,8 +417,8 @@
     max-width: none;
     margin: 0 auto;
     background: var(--site-bg);
-    border-left: var(--site-rule-strong) solid var(--site-border);
-    border-right: var(--site-rule-strong) solid var(--site-border);
+    border-left: 0;
+    border-right: 0;
   }
 
   .agenda-heading {
@@ -555,10 +555,10 @@
 
   @media (min-width: 768px) and (max-width: 1011px) {
     .agenda-shell {
-      width: calc(100% - 48px);
+      width: 100%;
       max-width: none;
-      border-left: 2px solid var(--site-border);
-      border-right: 2px solid var(--site-border);
+      border-left: 0;
+      border-right: 0;
     }
 
     .agenda-heading {
@@ -589,7 +589,7 @@
     .agenda-calendar {
       width: 64.4%;
       padding: 0;
-      border-left: 2px solid var(--site-border);
+      border-left: 0;
     }
 
     .agenda-day {
@@ -622,11 +622,11 @@
 
   @media (min-width: 1012px) {
     .agenda-shell {
-      width: calc(100% - 48px);
+      width: 100%;
       max-width: none;
-      margin: 0 24px;
-      border-left: 2px solid var(--site-border);
-      border-right: 2px solid var(--site-border);
+      margin: 0;
+      border-left: 0;
+      border-right: 0;
     }
 
     .agenda-heading {
@@ -658,7 +658,7 @@
     .agenda-calendar {
       flex: 1 1;
       padding: 0;
-      border-left: 2px solid var(--site-border);
+      border-left: 0;
     }
 
     .agenda-cta-button {
@@ -689,7 +689,7 @@
       left: 0;
       display: block;
       width: 100%;
-      height: 2px;
+      height: var(--site-rule-thin);
       background: var(--agenda-border, var(--agenda-accent));
       transform: scaleX(0);
       transform-origin: left;
@@ -2051,6 +2051,145 @@
     @apply max-h-28 max-w-48 object-contain grayscale transition hover:grayscale-0;
   }
 
+  .portfolio-section {
+    background: var(--site-bg);
+  }
+
+  /* Header: eyebrow, title, one-line intro */
+  .portfolio-header {
+    padding: 40px 32px 44px;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .portfolio-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 16px;
+    line-height: 1;
+    color: #000000;
+  }
+
+  .portfolio-eyebrow span {
+    width: 10px;
+    height: 10px;
+    background: var(--site-green);
+    animation: blink 1s steps(1) infinite;
+  }
+
+  .portfolio-title {
+    margin-top: 28px;
+    font-family: var(--font-sans);
+    font-size: clamp(4rem, 7vw, 7rem);
+    font-weight: 560;
+    line-height: 0.9;
+    letter-spacing: -0.07em;
+  }
+
+  .portfolio-intro {
+    max-width: 620px;
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-size: clamp(1.35rem, 1.6vw, 1.85rem);
+    font-weight: 460;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: var(--site-muted);
+  }
+
+  /* Brand groups: label row + uniform logo grid */
+  .portfolio-group-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px 32px;
+    border-bottom: 1px solid var(--site-border);
+  }
+
+  .portfolio-group-title {
+    font-family: var(--font-mono);
+    font-size: 18px;
+    line-height: 1;
+    color: #000000;
+  }
+
+  .portfolio-group-note {
+    max-width: 46ch;
+    margin-top: 12px;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.35;
+    color: var(--site-muted);
+  }
+
+  .portfolio-group-count {
+    flex: 0 0 auto;
+    padding-top: 2px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1;
+    color: var(--site-muted);
+    white-space: nowrap;
+  }
+
+  .portfolio-logo-grid {
+    display: grid;
+    min-width: 0;
+  }
+
+  .portfolio-logo-grid-owned {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .portfolio-partner-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .portfolio-logo-cell {
+    display: grid;
+    place-items: center;
+    min-height: 200px;
+    padding: 28px;
+    border-right: 1px solid var(--site-border);
+    border-bottom: 1px solid var(--site-border);
+    background: var(--site-bg);
+    transition: background-color .3s ease;
+  }
+
+  .portfolio-logo-grid-owned .portfolio-logo-cell:nth-child(4n) {
+    border-right: 0;
+  }
+
+  .portfolio-partner-grid .portfolio-logo-cell:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .portfolio-group:last-child .portfolio-logo-cell {
+    border-bottom: 0;
+  }
+
+  .portfolio-logo-cell:hover,
+  .portfolio-logo-cell:focus-visible {
+    background: var(--site-panel);
+  }
+
+  .portfolio-logo-cell img {
+    display: block;
+    max-width: min(70%, 175px);
+    max-height: 78px;
+    object-fit: contain;
+    filter: grayscale(1);
+    transition: filter .3s ease, transform .3s ease;
+  }
+
+  .portfolio-logo-cell:hover img,
+  .portfolio-logo-cell:focus-visible img {
+    filter: grayscale(0);
+    transform: translateY(-2px);
+  }
+
   .form-row {
     @apply grid gap-3 border-b border-grid p-6 sm:p-8;
   }
@@ -2679,6 +2818,72 @@
 
   .mobile-visual-slot.placeholder-slot-dark {
     background: #0c0f0d;
+  }
+
+  .portfolio-header {
+    padding: 28px 20px 32px;
+  }
+
+  .portfolio-title {
+    margin-top: 18px;
+    font-size: clamp(3.5rem, 16vw, 5rem);
+    line-height: 0.9;
+  }
+
+  .portfolio-intro {
+    margin-top: 16px;
+    font-size: 17px;
+  }
+
+  .portfolio-group-head {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .portfolio-group-title {
+    font-size: 16px;
+  }
+
+  .portfolio-group-note {
+    max-width: none;
+    margin-top: 8px;
+    font-size: 14px;
+  }
+
+  .portfolio-group-count {
+    padding-top: 0;
+    font-size: 13px;
+  }
+
+  .portfolio-logo-grid-owned {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .portfolio-partner-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-logo-cell {
+    min-height: 150px;
+    padding: 22px;
+  }
+
+  .portfolio-logo-grid-owned .portfolio-logo-cell:nth-child(4n) {
+    border-right: 1px solid var(--site-border);
+  }
+
+  .portfolio-logo-grid-owned .portfolio-logo-cell:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .portfolio-partner-grid .portfolio-logo-cell {
+    border-right: 0;
+  }
+
+  .portfolio-logo-cell img {
+    max-width: 80%;
+    max-height: 66px;
   }
 
   .big-cta {

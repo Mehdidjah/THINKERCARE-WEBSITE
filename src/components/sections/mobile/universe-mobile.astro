@@ -295,40 +295,47 @@ const contactSplineScene = "https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.sp
       </div>
     </section>
 
-    <section id="brands-mobile" class="border-b border-grid">
-      <div class="border-b border-grid px-5 py-8">
-        <p class="font-mono text-base">your-story-starts-here</p>
-      </div>
-      <div class="border-b border-grid px-5 py-8">
-        <div class="mb-6 font-sans text-[4rem] font-semibold leading-none text-[#b6ae32]">,,</div>
-        <p class="font-sans text-[2.65rem] font-medium leading-[1.08] tracking-[-0.04em]">
+    <section id="brands-mobile" class="portfolio-section portfolio-section-mobile border-b border-grid">
+      <div class="portfolio-header">
+        <p class="portfolio-eyebrow">your-story-starts-here <span aria-hidden="true"></span></p>
+        <h2 class="portfolio-title">brands/</h2>
+        <p class="portfolio-intro">
           We do not see markets. We see playgrounds where bold ideas meet real-world needs.
         </p>
       </div>
-      <div class="grid grid-cols-2">
-        {brands.map((brand) => (
-          <a href={brand.href} target="_blank" rel="noreferrer" class="logo-cell">
-            <img src={brand.image} alt={brand.name} />
-          </a>
-        ))}
-      </div>
-    </section>
 
-    <section class="border-b border-grid">
-      <div class="border-b border-grid px-5 py-8">
-        <h2 class="font-sans text-[3.25rem] font-medium leading-none tracking-[-0.045em]">
-          equity-partners/
-        </h2>
-        <p class="mt-6 text-xl leading-snug text-foreground-secondary">
-          Equity partnerships are built on trust, vision, and long-term value.
-        </p>
+      <div class="portfolio-group">
+        <div class="portfolio-group-head">
+          <div class="portfolio-group-labels">
+            <p class="portfolio-group-title">our brands/</p>
+            <p class="portfolio-group-note">Brands we build, own, and scale in-house.</p>
+          </div>
+          <span class="portfolio-group-count">{brands.length} active systems</span>
+        </div>
+        <div class="portfolio-logo-grid portfolio-logo-grid-owned">
+          {brands.map((brand) => (
+            <a href={brand.href} target="_blank" rel="noreferrer" class="portfolio-logo-cell">
+              <img src={brand.image} alt={brand.name} />
+            </a>
+          ))}
+        </div>
       </div>
-      <div class="grid grid-cols-1">
-        {partners.map((partner) => (
-          <a href={partner.href} target="_blank" rel="noreferrer" class="logo-cell">
-            <img src={partner.image} alt={partner.name} />
-          </a>
-        ))}
+
+      <div class="portfolio-group">
+        <div class="portfolio-group-head">
+          <div class="portfolio-group-labels">
+            <p class="portfolio-group-title">equity partner brands/</p>
+            <p class="portfolio-group-note">Long-term partners, separate from the owned portfolio.</p>
+          </div>
+          <span class="portfolio-group-count">{partners.length} partners</span>
+        </div>
+        <div class="portfolio-logo-grid portfolio-partner-grid">
+          {partners.map((partner) => (
+            <a href={partner.href} target="_blank" rel="noreferrer" class="portfolio-logo-cell">
+              <img src={partner.image} alt={partner.name} />
+            </a>
+          ))}
+        </div>
       </div>
     </section>
 
