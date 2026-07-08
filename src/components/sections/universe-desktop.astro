@@ -32,7 +32,7 @@ const heroPixelRows = [
 
   <main id="main" class="mx-auto max-w-[1600px] border-x border-grid bg-background-secondary">
     <section class="border-b border-grid">
-      <div class="tc-wordmark-row px-12 py-16">
+      <div class="tc-wordmark-row px-2 py-6">
         <h1 class="tc-wordmark hero-wordmark" aria-label="THINKERCARE,GROUP">
           <span class="hero-wordmark-text" aria-hidden="true">
             <span class="hero-wordmark-brand">
@@ -294,7 +294,7 @@ const heroPixelRows = [
               <span>{item.name}</span>
             </button>
           ))}
-          <a href="#brands" class="m-8 flex min-h-24 items-center justify-between border border-grid bg-background px-6 py-6 text-xl font-semibold shadow-inner transition hover:bg-primary hover:text-black">
+          <a href="#brands" class="site-inline-button m-8 flex min-h-24 items-center justify-between border border-grid bg-background px-6 py-6 text-xl font-semibold shadow-inner transition hover:bg-primary hover:text-black">
             Browse all brand systems <span aria-hidden="true">↗</span>
           </a>
         </div>
@@ -455,4 +455,49 @@ const heroPixelRows = [
       echo "start-a-project" &gt;&gt; thinkercare/group <span aria-hidden="true">↗</span>
     </a>
   </footer>
+
+  <script is:inline>
+    (() => {
+      const fitHeroWordmarks = () => {
+        const wordmarks = document.querySelectorAll(".hero-wordmark");
+
+        wordmarks.forEach((wordmark) => {
+          const text = wordmark.querySelector(".hero-wordmark-text");
+          if (!text) return;
+
+          const isMobileWordmark = Boolean(wordmark.closest(".mobile-hero-wordmark-row"));
+          const edgeReserve = isMobileWordmark
+            ? Math.max(10, Math.min(24, wordmark.clientWidth * 0.03))
+            : Math.max(56, Math.min(96, wordmark.clientWidth * 0.05));
+          const availableWidth = wordmark.clientWidth - edgeReserve;
+          if (availableWidth <= 0) return;
+
+          wordmark.style.removeProperty("--hero-wordmark-fit-size");
+
+          const currentSize = Number.parseFloat(getComputedStyle(wordmark).fontSize);
+          const textWidth = text.scrollWidth || text.getBoundingClientRect().width;
+          if (!currentSize || !textWidth) return;
+
+          const minSize = isMobileWordmark ? 20 : 46;
+          const maxSize = isMobileWordmark ? 66 : 260;
+          const fittedSize = Math.max(minSize, Math.min(maxSize, currentSize * (availableWidth / textWidth)));
+          wordmark.style.setProperty("--hero-wordmark-fit-size", `${fittedSize}px`);
+        });
+      };
+
+      const scheduleFit = () => window.requestAnimationFrame(fitHeroWordmarks);
+
+      scheduleFit();
+      window.addEventListener("resize", scheduleFit, { passive: true });
+
+      if ("ResizeObserver" in window) {
+        const observer = new ResizeObserver(scheduleFit);
+        document.querySelectorAll(".hero-wordmark").forEach((wordmark) => observer.observe(wordmark));
+      }
+
+      if (document.fonts?.ready) {
+        document.fonts.ready.then(scheduleFit);
+      }
+    })();
+  </script>
 </div>
