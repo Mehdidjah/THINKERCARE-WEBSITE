@@ -1264,7 +1264,7 @@
 
   .ticker {
     @apply relative overflow-hidden whitespace-nowrap;
-    min-height: 96px;
+    min-height: 64px;
     background: #000000;
   }
 
@@ -1275,14 +1275,14 @@
   }
 
   .ticker-item {
-    @apply flex min-w-[31rem] items-center justify-between border-r px-8 font-sans text-lg font-medium;
-    min-height: 96px;
+    @apply flex min-w-[30rem] items-center justify-between border-r px-6 font-sans text-base font-medium;
+    min-height: 64px;
   }
 
   .ticker-item:nth-child(odd) {
-    border-color: rgb(0 255 0 / 0.38);
+    border-color: rgb(255 255 255 / 0.18);
     background: #000000;
-    color: #00ff00;
+    color: #ffffff;
   }
 
   .ticker-item:nth-child(even) {
@@ -1296,8 +1296,8 @@
     right: 0;
     bottom: 0;
     z-index: 3;
-    width: 44px;
-    height: 44px;
+    width: 36px;
+    height: 36px;
     border-left: 2px solid rgb(0 0 0 / 0.25);
     border-top: 2px solid rgb(0 0 0 / 0.25);
     background: rgb(233 237 236 / 0.88);
@@ -2693,8 +2693,8 @@
   }
 
   .ticker {
-    min-height: 94px;
-    padding-right: 46px;
+    min-height: 56px;
+    padding-right: 42px;
   }
 
   .ticker::after {
@@ -2714,10 +2714,10 @@
   }
 
   .ticker-item {
-    min-width: 18.5rem;
-    min-height: 94px;
-    padding: 0 54px 0 20px;
-    font-size: 16px;
+    min-width: 17rem;
+    min-height: 56px;
+    padding: 0 44px 0 18px;
+    font-size: 15px;
     line-height: 1.2;
   }
 
@@ -2725,8 +2725,8 @@
     right: 4px;
     bottom: auto;
     top: 50%;
-    width: 40px;
-    height: 40px;
+    width: 34px;
+    height: 34px;
     border: 2px solid rgb(0 0 0 / 0.22);
     border-radius: 999px;
     font-size: 8px;
