@@ -1312,10 +1312,10 @@
   }
 
   .pixel-band {
-    background-color: var(--site-green);
+    background-color: #0f0;
     background-image:
-      linear-gradient(90deg, transparent 0 10%, #bba00a 10% 15%, transparent 15% 27%, #bba00a 27% 32%, transparent 32% 46%, #5fed83 46% 53%, #bba00a 53% 66%, var(--site-green) 66% 74%, #ae85ff 74% 84%, var(--site-green) 84% 100%),
-      linear-gradient(0deg, transparent 0 33%, #58be52 33% 50%, transparent 50% 66%, #9b78f1 66% 100%);
+      linear-gradient(90deg, transparent 0 10%, #000 10% 15%, transparent 15% 27%, #000 27% 32%, transparent 32% 46%, #000 46% 53%, transparent 53% 66%, #000 66% 74%, transparent 74% 84%, #000 84% 100%),
+      linear-gradient(0deg, transparent 0 33%, #000 33% 50%, transparent 50% 66%, #000 66% 100%);
     background-blend-mode: normal;
     background-size: 100% 100%;
   }
